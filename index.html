@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creative Portfolio | Graphic Designer</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,14 +46,18 @@
             </div>
         </div>
         <div class="hero-content">
-            <div class="main-logo">
-                <img src="images/main-logo.png" alt="Main Logo">
+            <div class="logo-container">
+                <div class="main-logo">
+                    <img src="images/main-logo.png" alt="Main Logo">
+                </div>
             </div>
-            <h1 class="animate-text">Creative <span class="highlight">Designer</span></h1>
-            <p class="subtitle">Turning Ideas into Visual Stories</p>
+            <div class="text-content">
+                <h1 class="animate-text">Creative <span class="highlight">Designer</span></h1>
+                <p class="subtitle">Turning Ideas into Visual Stories</p>
+            </div>
         </div>
         <div class="scroll-indicator">
-            <a href="#portfolio" class="explore-link"><p>Explore More</p></a>
+            <a href="#portfolio" class="explore-link">Explore More</a>
         </div>
     </section>
 
@@ -60,54 +70,54 @@
         <div class="container">
             <h2 class="section-title">My Work</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="motion-infographic">
-                    <img src="images/portfolio-motion-infographic.jpg" alt="Motion Graphics and Infographic">
+                <a href="motion-infographic.html" class="portfolio-item" data-category="motion-infographic">
+                    <img src="images/motion-graphics.jpg" alt="Motion Graphics and Infographic">
                     <div class="portfolio-overlay">
                         <h3>Motion Graphics/Infographic</h3>
                         <p>Dynamic Visual Storytelling</p>
                         <span class="view-project">View Projects →</span>
                     </div>
-                </div>
-                <div class="portfolio-item" data-category="vfx-3d">
-                    <img src="images/portfolio-vfx-3d.jpg" alt="VFX and 3D Animation">
+                </a>
+                <a href="vfx-3d.html" class="portfolio-item" data-category="vfx-3d">
+                    <img src="images/vfx-3d.jpg" alt="VFX and 3D Animation">
                     <div class="portfolio-overlay">
                         <h3>VFX/3D Animation</h3>
                         <p>Visual Effects & 3D Animations</p>
                         <span class="view-project">View Projects →</span>
                     </div>
-                </div>
-                <div class="portfolio-item" data-category="logo-animation">
-                    <img src="images/portfolio-logo-animation.jpg" alt="Logo Animation">
+                </a>
+                <a href="logo-animation.html" class="portfolio-item" data-category="logo-animation">
+                    <img src="images/logo-animation.jpg" alt="Logo Animation">
                     <div class="portfolio-overlay">
                         <h3>Logo Animation</h3>
                         <p>Animated Brand Elements</p>
                         <span class="view-project">View Projects →</span>
                     </div>
-                </div>
-                <div class="portfolio-item" data-category="brand-identity">
-                    <img src="images/portfolio-brand-identity.jpg" alt="Brand Identity and Logos">
+                </a>
+                <a href="brand-identity.html" class="portfolio-item" data-category="brand-identity">
+                    <img src="images/brand-identity.jpg" alt="Brand Identity and Logos">
                     <div class="portfolio-overlay">
                         <h3>Brand Identity/Logos</h3>
                         <p>Corporate Identity & Logo Design</p>
                         <span class="view-project">View Projects →</span>
                     </div>
-                </div>
-                <div class="portfolio-item" data-category="playing-cards">
-                    <img src="images/portfolio-playing-cards.jpg" alt="Playing Cards">
+                </a>
+                <a href="playing-cards.html" class="portfolio-item" data-category="playing-cards">
+                    <img src="images/playing-cards.jpg" alt="Playing Cards">
                     <div class="portfolio-overlay">
                         <h3>Playing Cards</h3>
                         <p>Custom Card Design & Illustration</p>
                         <span class="view-project">View Projects →</span>
                     </div>
-                </div>
-                <div class="portfolio-item" data-category="post-designs">
-                    <img src="images/portfolio-post-designs.jpg" alt="Post Designs">
+                </a>
+                <a href="post-designs.html" class="portfolio-item" data-category="post-designs">
+                    <img src="images/post-designs.jpg" alt="Post Designs">
                     <div class="portfolio-overlay">
                         <h3>Post Designs</h3>
                         <p>Social Media & Marketing Content</p>
                         <span class="view-project">View Projects →</span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -115,7 +125,10 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">Noah in some words</h2>
+            <div class="about-title-container">
+                <h2 class="about-title">IN FEWER WORDS</h2>
+                <h3 class="about-subtitle">NOAH</h3>
+            </div>
             <div class="about-content">
                 <div class="about-text">
                     <p>I'm a passionate graphic designer with a keen eye for detail and a love for creating impactful visual experiences. With expertise in branding, digital design, and print media, I help businesses tell their stories through compelling visuals.</p>
@@ -168,15 +181,15 @@
                 <div class="contact-form-container">
                     <form id="contact-form" class="contact-form">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" autocomplete="name" required>
                             <label for="name">Enter your Name</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
                             <label for="email">Enter a valid email address</label>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" required></textarea>
+                            <textarea id="message" name="message" autocomplete="off" required></textarea>
                             <label for="message">Enter your message</label>
                         </div>
                         <div class="form-group checkbox-group">
@@ -193,7 +206,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Creative Portfolio. All rights reserved.</p>
+            <p>&copy; 2025 Noah's Design. All rights reserved.</p>
         </div>
     </footer>
 

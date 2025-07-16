@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Animation | Creative Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/your-logo.png" alt="Portfolio Logo" class="logo-image">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Back to Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Category Header -->
+    <section class="category-header">
+        <div class="container">
+            <h1>Logo Animation</h1>
+            <p>Dynamic and creative logo animations</p>
+            <div class="category-select">
+                <select id="categorySelect" onchange="window.location.href=this.value">
+                    <option value="motion-infographic.html">Motion Graphics/Infographic</option>
+                    <option value="vfx-3d.html">VFX/3D Animation</option>
+                    <option value="logo-animation.html" selected>Logo Animation</option>
+                    <option value="brand-identity.html">Brand Identity/Logos</option>
+                    <option value="playing-cards.html">Playing Cards</option>
+                    <option value="post-designs.html">Post Designs</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects">
+        <div class="container">
+            <div class="projects-grid">
+                <!-- Miss Janoub Logo -->
+                <div class="project-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="./projects/logo-animation/videos/Miss Janoub Logo Reveal.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Miss Janoub</h3>
+                        <p>Elegant brand reveal with fluid transitions and sophisticated motion design</p>
+                    </div>
+                </div>
+
+                <!-- ICA Logo -->
+                <div class="project-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="./projects/logo-animation/videos/ICA Logo Animation.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>ICA</h3>
+                        <p>Corporate identity animation with precise geometric transformations</p>
+                    </div>
+                </div>
+
+                <!-- Marketality Logo -->
+                <div class="project-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="./projects/logo-animation/videos/Marketality Logo Rveal.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Marketality</h3>
+                        <p>Dynamic brand reveal emphasizing digital marketing expertise</p>
+                    </div>
+                </div>
+
+                <!-- Smart Life Logo -->
+                <div class="project-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="./projects/logo-animation/videos/Smart Life Logo reveal 2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Smart Life</h3>
+                        <p>Tech-forward animation with sleek transitions and modern aesthetics</p>
+                    </div>
+                </div>
+
+                <!-- ZC Logo -->
+                <div class="project-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="./projects/logo-animation/videos/ZC new.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>ZC Brand</h3>
+                        <p>Minimalist design with impactful visual rhythm and bold presence</p>
+                    </div>
+                </div>
+
+                <!-- Teasing Animation -->
+                <div class="project-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="./projects/logo-animation/videos/Teaseing 2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Brand Teaser</h3>
+                        <p>Captivating narrative through motion and strategic reveal timing</p>
+                    </div>
+                </div>
+
+                <!-- Whiteboard Animation -->
+                <div class="project-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="./projects/logo-animation/videos/whiteboard it 2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Whiteboard It</h3>
+                        <p>Organic drawing animation with seamless hand-drawn transitions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Noah's Design. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
