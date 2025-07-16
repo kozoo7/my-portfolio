@@ -57,48 +57,50 @@ progressBars.forEach(bar => progressObserver.observe(bar));
 const contactForm = document.getElementById('contact-form');
 const formGroups = document.querySelectorAll('.form-group');
 
-formGroups.forEach(group => {
-    const input = group.querySelector('input, textarea');
-    if (input) {
-        input.addEventListener('focus', () => {
-            group.classList.add('focused');
-        });
+if (contactForm) {
+    formGroups.forEach(group => {
+        const input = group.querySelector('input, textarea');
+        if (input) {
+            input.addEventListener('focus', () => {
+                group.classList.add('focused');
+            });
 
-        input.addEventListener('blur', () => {
-            if (!input.value) {
-                group.classList.remove('focused');
-            }
-        });
-    }
-});
+            input.addEventListener('blur', () => {
+                if (!input.value) {
+                    group.classList.remove('focused');
+                }
+            });
+        }
+    });
 
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
-    };
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        };
 
-    // Basic form validation
-    if (!formData.name || !formData.email || !formData.message) {
-        alert('Please fill in all fields');
-        return;
-    }
+        // Basic form validation
+        if (!formData.name || !formData.email || !formData.message) {
+            alert('Please fill in all fields');
+            return;
+        }
 
-    if (!isValidEmail(formData.email)) {
-        alert('Please enter a valid email address');
-        return;
-    }
+        if (!isValidEmail(formData.email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
 
-    // Here you would typically send the form data to a server
-    // For demo purposes, we'll just log it and show a success message
-    console.log('Form submitted:', formData);
-    alert('Message sent successfully!');
-    contactForm.reset();
-});
+        // Here you would typically send the form data to a server
+        // For demo purposes, we'll just log it and show a success message
+        console.log('Form submitted:', formData);
+        alert('Message sent successfully!');
+        contactForm.reset();
+    });
+}
 
 // Email validation helper
 function isValidEmail(email) {
@@ -157,33 +159,35 @@ document.addEventListener('mousemove', (e) => {
 
 // Dynamic Typing Effect
 const typingText = document.querySelector('.animate-text');
-const words = ['Designer', 'Creator', 'Artist', 'Innovator'];
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+if (typingText) {
+    const words = ['Designer', 'Creator', 'Artist', 'Innovator'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-function typeEffect() {
-    const currentWord = words[wordIndex];
-    const currentChar = currentWord.substring(0, charIndex);
-    
-    typingText.innerHTML = `Creative <span class="highlight">${currentChar}</span>`;
-    
-    if (!isDeleting && charIndex < currentWord.length) {
-        charIndex++;
-        setTimeout(typeEffect, 200);
-    } else if (isDeleting && charIndex > 0) {
-        charIndex--;
-        setTimeout(typeEffect, 100);
-    } else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) {
-            wordIndex = (wordIndex + 1) % words.length;
+    function typeEffect() {
+        const currentWord = words[wordIndex];
+        const currentChar = currentWord.substring(0, charIndex);
+        
+        typingText.innerHTML = `Creative <span class="highlight">${currentChar}</span>`;
+        
+        if (!isDeleting && charIndex < currentWord.length) {
+            charIndex++;
+            setTimeout(typeEffect, 200);
+        } else if (isDeleting && charIndex > 0) {
+            charIndex--;
+            setTimeout(typeEffect, 100);
+        } else {
+            isDeleting = !isDeleting;
+            if (!isDeleting) {
+                wordIndex = (wordIndex + 1) % words.length;
+            }
+            setTimeout(typeEffect, 1000);
         }
-        setTimeout(typeEffect, 1000);
     }
-}
 
-typeEffect();
+    typeEffect();
+}
 
 // Enhanced Scroll Animation
 const scrollElements = document.querySelectorAll('.portfolio-item, .skill-item, .section-title');
@@ -243,18 +247,19 @@ portfolioItems.forEach(item => {
 
 // Enhanced Form Interaction
 const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
-
-formInputs.forEach(input => {
-    input.addEventListener('focus', () => {
-        input.parentElement.classList.add('focus');
+if (formInputs.length > 0) {
+    formInputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.parentElement.classList.add('focus');
+        });
+        
+        input.addEventListener('blur', () => {
+            if (input.value === '') {
+                input.parentElement.classList.remove('focus');
+            }
+        });
     });
-    
-    input.addEventListener('blur', () => {
-        if (input.value === '') {
-            input.parentElement.classList.remove('focus');
-        }
-    });
-});
+}
 
 // Smooth Reveal Animation for Sections
 const revealSection = (entries, observer) => {
@@ -311,4 +316,78 @@ const updateProgressBars = () => {
     });
 };
 
-updateProgressBars(); 
+updateProgressBars();
+
+// Smooth scroll for Explore More link
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the explore link
+    const exploreLink = document.querySelector('.explore-link');
+    const portfolioSection = document.querySelector('#portfolio');
+
+    if (exploreLink && portfolioSection) {
+        exploreLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Smooth scroll to portfolio section
+            portfolioSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    }
+}); 
+
+// Back to top button functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    if (backToTopButton) {
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+});
+
+// Video Loading Handler
+document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('video');
+    
+    videos.forEach(video => {
+        // Add loading class
+        video.parentElement.classList.add('loading');
+        
+        // Handle successful loading
+        video.addEventListener('loadeddata', () => {
+            video.parentElement.classList.remove('loading');
+            video.parentElement.classList.add('loaded');
+        }, { once: true });
+        
+        // Handle loading errors
+        video.addEventListener('error', () => {
+            video.parentElement.classList.remove('loading');
+            video.parentElement.classList.add('error');
+            console.log('Error loading video:', video.querySelector('source').src);
+        }, { once: true });
+
+        // Cleanup resources when video is not in viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(video);
+    });
+}); 
