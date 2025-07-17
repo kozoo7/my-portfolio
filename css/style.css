@@ -34,6 +34,32 @@ body {
     overflow-x: hidden;
 }
 
+/* Content Protection */
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Allow selection for CV download elements */
+.allow-download {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* Protect images */
+img:not(.allow-download) {
+    pointer-events: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
 .container {
     width: 100%;
     max-width: 1200px;
@@ -2035,15 +2061,14 @@ section {
 }
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
     width: 100%;
+    margin: 0 auto;
 }
 
 .project-item {
     position: relative;
-    width: 100%;
+    width: calc(33.333% - 20px);
+    margin-bottom: 20px;
     background: var(--background-alt);
     border-radius: 8px;
     overflow: hidden;
@@ -2062,6 +2087,19 @@ section {
     height: auto;
     display: block;
     border-radius: 8px;
+}
+
+/* Image styles for non-video projects */
+.project-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover img {
+    transform: scale(1.05);
 }
 
 .project-info {
@@ -2094,7 +2132,12 @@ section {
     line-height: 1.4;
 }
 
-/* Mobile Styles */
+@media (max-width: 1024px) {
+    .project-item {
+        width: calc(50% - 20px);
+    }
+}
+
 @media (max-width: 768px) {
     .projects {
         padding: 30px 0;
@@ -2104,13 +2147,9 @@ section {
         padding: 0 15px;
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
     .project-item {
-        margin-bottom: 0;
+        width: 100%;
+        margin-bottom: 20px;
     }
 
     .project-info {
@@ -2137,8 +2176,8 @@ section {
         padding: 0 10px;
     }
 
-    .projects-grid {
-        gap: 15px;
+    .project-item {
+        margin-bottom: 15px;
     }
 
     .project-info {
@@ -2299,4 +2338,27 @@ section {
     .category-select select {
         width: 100%;
     }
+} 
+
+/* CV Button Style */
+.cv-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.cv-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(224, 166, 57, 0.3);
+}
+
+.cv-download-btn i {
+    font-size: 1.2rem;
 } 

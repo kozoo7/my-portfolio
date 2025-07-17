@@ -391,3 +391,42 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(video);
     });
 }); 
+
+// Content Protection
+document.addEventListener('contextmenu', function(e) {
+    // Allow right-click only on elements with class 'allow-download'
+    if (!e.target.closest('.allow-download')) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    // Prevent Ctrl+S, Ctrl+U, Ctrl+Shift+I, F12
+    if (
+        (e.ctrlKey && e.keyCode == 83) || // Ctrl+S
+        (e.ctrlKey && e.keyCode == 85) || // Ctrl+U
+        (e.ctrlKey && e.shiftKey && e.keyCode == 73) || // Ctrl+Shift+I
+        e.keyCode == 123 // F12
+    ) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Prevent dragging of images
+document.addEventListener('dragstart', function(e) {
+    if (!e.target.closest('.allow-download')) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Add protection to videos
+document.addEventListener('DOMContentLoaded', function() {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+        video.addEventListener('contextmenu', e => e.preventDefault());
+        video.controlsList = "nodownload";
+    });
+}); 
