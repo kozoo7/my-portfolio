@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playing Cards Projects | Creative Portfolio</title>
+    <title>Playing Cards | Creative Portfolio</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
@@ -11,13 +11,11 @@
     <link rel="manifest" href="favicon/site.webmanifest">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/playing-cards.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Masonry -->
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="js/masonry.js"></script>
 </head>
 <body>
     <!-- Header Section -->
@@ -38,7 +36,7 @@
     <section class="category-header">
         <div class="container">
             <h1>Playing Cards</h1>
-            <p>Custom playing card designs and illustrations</p>
+            <p>Custom designed playing cards and card games</p>
             <div class="category-select">
                 <select id="categorySelect" onchange="window.location.href=this.value">
                     <option value="motion-infographic.html">Motion Graphics/Infographic</option>
@@ -55,93 +53,45 @@
     <!-- Projects Grid -->
     <section class="projects">
         <div class="container">
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/playing-cards/videos/project1.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+            <div class="playing-cards-grid">
+                <!-- Cedars Playing Cards Project -->
+                <div class="card-project">
+                    <div class="card-thumbnail" 
+                         data-project-id="cedars-deck"
+                         data-project-title="Cedars Playing Cards"
+                         data-project-images='[
+                            "./projects/playing-cards/full-images/tuck-box.jpg",
+                            "./projects/playing-cards/full-images/Clubs.jpg",
+                            "./projects/playing-cards/full-images/Hearts.jpg",
+                            "./projects/playing-cards/full-images/Spades.jpg",
+                            "./projects/playing-cards/full-images/Diamonds.jpg",
+                            "./projects/playing-cards/full-images/pack-box.jpg",
+                            "./projects/playing-cards/full-images/inner-print.jpg",
+                            "./projects/playing-cards/full-images/guilding.jpg",
+                            "./projects/playing-cards/full-images/Joker.jpg",
+                            "./projects/playing-cards/full-images/3-tucks.jpg",
+                            "./projects/playing-cards/full-images/Ace-of-spades.jpg"
+                         ]'>
+                        <img src="./projects/playing-cards/thumbnails/cedars-deck-thumb.jpg" 
+                             alt="Cedars Playing Cards Thumbnail">
                     </div>
-                    <div class="project-info">
-                        <h3>Royal Deck</h3>
-                        <p>Luxurious playing card design with intricate royal illustrations</p>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/playing-cards/videos/project2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Minimalist Collection</h3>
-                        <p>Modern minimalist deck with clean lines and bold typography</p>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/playing-cards/videos/project3.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Fantasy Series</h3>
-                        <p>Mythical creatures and magical elements in a unique card collection</p>
+                    <div class="card-info">
+                        <h3>Cedars Playing Cards</h3>
+                        <p>A Kickstarter-funded playing card project celebrating Lebanese heritage. Features traditional court card designs, elegant cedar motifs, and custom artwork throughout, including a distinctive green color scheme and intricate back design.</p>
                     </div>
                 </div>
 
-                <!-- Project 4 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/playing-cards/videos/project4.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Vintage Edition</h3>
-                        <p>Classic playing cards with a nostalgic vintage aesthetic</p>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/playing-cards/videos/project5.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Art Deco Deck</h3>
-                        <p>Elegant art deco inspired design with geometric patterns</p>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/playing-cards/videos/project6.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Custom Theme</h3>
-                        <p>Bespoke playing card design with unique thematic elements</p>
-                    </div>
-                </div>
+                <!-- Placeholder for more projects -->
             </div>
         </div>
     </section>
+
+    <!-- Modal for displaying full images -->
+    <div class="modal">
+        <div class="modal-content">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -155,6 +105,8 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script src="js/playing-cards.js"></script>
 </body>
 </html> 
