@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-video-uploader",
+  "version": "1.0.0",
+  "description": "Upload videos to Cloudinary",
+  "main": "upload-to-cloudinary.js",
+  "scripts": {
+    "upload": "node upload-to-cloudinary.js"
+  },
+  "dependencies": {
+    "cloudinary": "^1.41.0",
+    "dotenv": "^16.3.1"
+  }
+} 

@@ -18,6 +18,68 @@
     <!-- Masonry -->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="js/masonry.js"></script>
+    <style>
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            background: #f0f0f0;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+        }
+        
+        .video-wrapper.loading::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-wrapper .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .video-wrapper .play-button:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .video-wrapper .play-button i {
+            color: white;
+            font-size: 24px;
+            margin-left: 4px;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .video-wrapper.playing .play-button {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -58,9 +120,12 @@
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/Mediaology x Manar Infographic Final 1_2.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Mediaology_x_Manar_Infographic_Final_1_2">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Mediaology_x_Manar_Infographic_Final_1_2.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Mediaology_x_Manar_Infographic_Final_1_2.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -72,9 +137,12 @@
 
                 <!-- Project 2 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/Ls Trading- Explainer Vid edit 2.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Ls_Trading_Explainer_Vid_edit_2">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Ls_Trading_Explainer_Vid_edit_2.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Ls_Trading_Explainer_Vid_edit_2.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -86,9 +154,12 @@
 
                 <!-- Project 3 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/D-Buz.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/D_Buz">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/D_Buz.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/D_Buz.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -100,9 +171,12 @@
 
                 <!-- Project 4 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/Divercities sample vid.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Divercities_sample_vid">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Divercities_sample_vid.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Divercities_sample_vid.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -114,9 +188,12 @@
 
                 <!-- Project 5 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/eid -noah.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/eid_-noah">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/eid_-noah.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/eid_-noah.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -128,9 +205,12 @@
 
                 <!-- Project 6 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/FOMO.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/FOMO">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/FOMO.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/FOMO.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -142,9 +222,12 @@
 
                 <!-- Project 7 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/Copy Trade.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Copy_Trade">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Copy_Trade.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Copy_Trade.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -156,9 +239,12 @@
 
                 <!-- Project 8 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/International teams 2.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/International_teams_2">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/International_teams_2.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/International_teams_2.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -170,9 +256,12 @@
 
                 <!-- Project 9 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/Blanket.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Blanket">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Blanket.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Blanket.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -184,9 +273,12 @@
 
                 <!-- Project 10 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/Christmas Oxshare.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Christmas_Oxshare">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Christmas_Oxshare.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Christmas_Oxshare.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -198,9 +290,12 @@
 
                 <!-- Project 11 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/Maonocaster.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Maonocaster">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Maonocaster.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Maonocaster.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -212,9 +307,12 @@
 
                 <!-- Project 12 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/black friday-arabic.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/black_friday-arabic">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/black_friday-arabic.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/black_friday-arabic.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -226,9 +324,12 @@
 
                 <!-- Project 13 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/MIss Janoub 1st Vid.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/MIss_Janoub_1st_Vid">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/MIss_Janoub_1st_Vid.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/MIss_Janoub_1st_Vid.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -240,9 +341,12 @@
 
                 <!-- Project 14 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/Miss Janoub StayTuned.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Miss_Janoub_StayTuned">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Miss_Janoub_StayTuned.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Miss_Janoub_StayTuned.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -254,9 +358,12 @@
 
                 <!-- Project 15 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/oxshare-infographic.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/oxshare-infographic">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/oxshare-infographic.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/oxshare-infographic.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -268,9 +375,12 @@
 
                 <!-- Project 16 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/Adha Animation 2.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Adha_Animation_2">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Adha_Animation_2.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Adha_Animation_2.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -282,9 +392,12 @@
 
                 <!-- Project 17 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/1st-.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/1st-">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/1st-.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/1st-.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -296,9 +409,12 @@
 
                 <!-- Project 18 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/ADD_3.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/ADD_3">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/ADD_3.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/ADD_3.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -310,9 +426,12 @@
 
                 <!-- Project 19 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/Comp 1.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Comp_1">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Comp_1.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Comp_1.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -324,9 +443,12 @@
 
                 <!-- Project 20 -->
                 <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/motion-infographic/videos/jeish.mp4" type="video/mp4">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/jeish">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/jeish.jpg">
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/jeish.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -352,5 +474,62 @@
     </button>
 
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoWrappers = document.querySelectorAll('.video-wrapper');
+            
+            videoWrappers.forEach(wrapper => {
+                const video = wrapper.querySelector('video');
+                const playButton = wrapper.querySelector('.play-button');
+                
+                // Load video only when play is clicked
+                if (playButton) {
+                    playButton.addEventListener('click', function() {
+                        const source = video.querySelector('source');
+                        if (source.dataset.src) {
+                            source.src = source.dataset.src;
+                            video.load();
+                            video.play();
+                            wrapper.classList.add('playing');
+                            wrapper.classList.remove('loading');
+                        }
+                    });
+                }
+
+                // Remove loading state when poster is loaded
+                video.addEventListener('loadeddata', function() {
+                    wrapper.classList.remove('loading');
+                });
+
+                // Handle video end
+                video.addEventListener('ended', function() {
+                    wrapper.classList.remove('playing');
+                    playButton.style.display = 'flex';
+                });
+            });
+
+            // Intersection Observer for lazy loading video posters
+            const videoObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const wrapper = entry.target;
+                        const video = wrapper.querySelector('video');
+                        if (video.getAttribute('poster') === '') {
+                            const posterUrl = wrapper.dataset.posterUrl;
+                            if (posterUrl) {
+                                video.setAttribute('poster', posterUrl);
+                            }
+                        }
+                        observer.unobserve(wrapper);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.1
+            });
+
+            videoWrappers.forEach(wrapper => videoObserver.observe(wrapper));
+        });
+    </script>
 </body>
 </html> 
