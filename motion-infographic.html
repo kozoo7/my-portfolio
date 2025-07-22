@@ -23,8 +23,45 @@
             position: relative;
             width: 100%;
             background: #f0f0f0;
-            aspect-ratio: 16/9;
             cursor: pointer;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .video-wrapper::before {
+            content: '';
+            display: block;
+        }
+        
+        .projects-grid {
+            margin: 0 -15px;
+            width: calc(100% + 30px);
+        }
+
+        .project-item {
+            width: calc(33.333% - 30px);
+            margin: 15px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        @media (max-width: 1200px) {
+            .project-item {
+                width: calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-item {
+                width: calc(100% - 30px);
+            }
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
         }
         
         .video-wrapper.loading::before {
@@ -37,12 +74,22 @@
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
             animation: loading 1.5s infinite;
+            z-index: 1;
         }
 
         .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: #000;
+            display: none;
+        }
+
+        .video-wrapper.playing video {
+            display: block;
         }
 
         .video-wrapper .play-button {
@@ -58,11 +105,13 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            z-index: 2;
         }
 
         .video-wrapper .play-button:hover {
             background: rgba(0, 0, 0, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
         }
 
         .video-wrapper .play-button i {
@@ -78,6 +127,45 @@
 
         .video-wrapper.playing .play-button {
             display: none;
+        }
+
+        .video-wrapper .thumbnail {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .video-wrapper.playing .thumbnail {
+            display: none;
+        }
+
+        .project-info {
+            padding: 15px;
+            background: #fff;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .project-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .project-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .projects {
+            padding: 30px 0;
         }
     </style>
 </head>
@@ -120,114 +208,13 @@
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Mediaology_x_Manar_Infographic_Final_1_2">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753128085/Copy_Trade_ogjnc0.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753128085/Copy_Trade_ogjnc0.jpg" alt="Copy Trade Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Mediaology_x_Manar_Infographic_Final_1_2.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Mediaology_x_Manar_Infographic_Final_1_2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Mediaology Infographic</h3>
-                        <p>Comprehensive data visualization and storytelling through motion</p>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Ls_Trading_Explainer_Vid_edit_2">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Ls_Trading_Explainer_Vid_edit_2.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Ls_Trading_Explainer_Vid_edit_2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Trading Explainer</h3>
-                        <p>Clear and engaging explanation of trading concepts</p>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/D_Buz">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/D_Buz.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/D_Buz.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>D-Buz Presentation</h3>
-                        <p>Dynamic business presentation with modern motion graphics</p>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Divercities_sample_vid">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Divercities_sample_vid.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Divercities_sample_vid.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Divercities Showcase</h3>
-                        <p>Urban diversity visualization through motion graphics</p>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/eid_-noah">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/eid_-noah.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/eid_-noah.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Eid Celebration</h3>
-                        <p>Festive motion graphics for holiday greetings</p>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/FOMO">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/FOMO.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/FOMO.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>FOMO Concept</h3>
-                        <p>Engaging explanation of market psychology concepts</p>
-                    </div>
-                </div>
-
-                <!-- Project 7 -->
-                <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Copy_Trade">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Copy_Trade.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Copy_Trade.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753128085/Copy_Trade_ogjnc0.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -237,31 +224,87 @@
                     </div>
                 </div>
 
-                <!-- Project 8 -->
+                <!-- Project 2 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/International_teams_2">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753128082/eid_-noah_aw7gs7.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753128082/eid_-noah_aw7gs7.jpg" alt="Eid Celebration Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/International_teams_2.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/International_teams_2.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753128082/eid_-noah_aw7gs7.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
-                        <h3>International Teams</h3>
-                        <p>Global collaboration visualization with dynamic elements</p>
+                        <h3>Eid Celebration</h3>
+                        <p>Festive motion graphics for holiday greetings</p>
                     </div>
                 </div>
 
-                <!-- Project 9 -->
+                <!-- Project 3 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Blanket">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753128075/الرجل_المشنوق_colhaj.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753128075/الرجل_المشنوق_colhaj.jpg" alt="Trading Pattern Analysis Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Blanket.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Blanket.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753128075/الرجل_المشنوق_colhaj.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Trading Pattern Analysis</h3>
+                        <p>Technical analysis of the Hanging Man pattern in trading</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753128069/1st-_w29wqf.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753128069/1st-_w29wqf.jpg" alt="First Place Animation Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753128069/1st-_w29wqf.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>First Place Animation</h3>
+                        <p>Achievement celebration motion graphics</p>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753128057/FOMO_zfogou.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753128057/FOMO_zfogou.jpg" alt="FOMO Concept Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753128057/FOMO_zfogou.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>FOMO Concept</h3>
+                        <p>Engaging explanation of market psychology concepts</p>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127985/Blanket_hijckz.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127985/Blanket_hijckz.jpg" alt="Blanket Product Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127985/Blanket_hijckz.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -271,65 +314,123 @@
                     </div>
                 </div>
 
-                <!-- Project 10 -->
+                <!-- Project 7 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Christmas_Oxshare">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127942/oxshare-infographic_rqv1bu.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127942/oxshare-infographic_rqv1bu.jpg" alt="Oxshare Infographic Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Christmas_Oxshare.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Christmas_Oxshare.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127942/oxshare-infographic_rqv1bu.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
-                        <h3>Christmas Campaign</h3>
-                        <p>Festive motion graphics for holiday marketing</p>
+                        <h3>Oxshare Infographic</h3>
+                        <p>Financial data visualization and explainer content</p>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127886/D-Buz_zeudnl.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127886/D-Buz_zeudnl.jpg" alt="D-Buz Presentation Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127886/D-Buz_zeudnl.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>D-Buz Presentation</h3>
+                        <p>Dynamic business presentation with modern motion graphics</p>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127873/Divercities_sample_vid_dzhyc5.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127873/Divercities_sample_vid_dzhyc5.jpg" alt="Divercities Sample Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127873/Divercities_sample_vid_dzhyc5.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Divercities Showcase</h3>
+                        <p>Urban diversity visualization through motion graphics</p>
+                    </div>
+                </div>
+
+                <!-- Project 10 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.jpg" alt="Trading Explainer Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Trading Explainer</h3>
+                        <p>Clear and engaging explanation of trading concepts</p>
                     </div>
                 </div>
 
                 <!-- Project 11 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Maonocaster">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127810/International_teams_2_ru1bqm.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127810/International_teams_2_ru1bqm.jpg" alt="International Teams Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Maonocaster.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Maonocaster.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127810/International_teams_2_ru1bqm.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
-                        <h3>Maonocaster</h3>
-                        <p>Product demonstration with dynamic motion graphics</p>
+                        <h3>International Teams</h3>
+                        <p>Global collaboration visualization with dynamic elements</p>
                     </div>
                 </div>
 
                 <!-- Project 12 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/black_friday-arabic">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127777/Copy_Trade_1_y4oqve.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127777/Copy_Trade_1_y4oqve.jpg" alt="Copy Trading Part 1 Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/black_friday-arabic.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/black_friday-arabic.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127777/Copy_Trade_1_y4oqve.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
-                        <h3>Black Friday Campaign</h3>
-                        <p>Promotional motion graphics for sales event</p>
+                        <h3>Copy Trading Part 1</h3>
+                        <p>Detailed walkthrough of copy trading features</p>
                     </div>
                 </div>
 
                 <!-- Project 13 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/MIss_Janoub_1st_Vid">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127754/MIss_Janoub_1st_Vid_uz0wh5.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127754/MIss_Janoub_1st_Vid_uz0wh5.jpg" alt="Miss Janoub Campaign Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/MIss_Janoub_1st_Vid.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/MIss_Janoub_1st_Vid.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127754/MIss_Janoub_1st_Vid_uz0wh5.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -341,120 +442,289 @@
 
                 <!-- Project 14 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Miss_Janoub_StayTuned">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127737/Christmas_Oxshare_bhqkez.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127737/Christmas_Oxshare_bhqkez.jpg" alt="Christmas Oxshare Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Miss_Janoub_StayTuned.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Miss_Janoub_StayTuned.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127737/Christmas_Oxshare_bhqkez.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
-                        <h3>Miss Janoub Teaser</h3>
-                        <p>Teaser campaign with engaging motion graphics</p>
+                        <h3>Christmas Celebration</h3>
+                        <p>Festive holiday animation for Oxshare</p>
                     </div>
                 </div>
 
                 <!-- Project 15 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/oxshare-infographic">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127723/Comp_1_bxwb6n.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127723/Comp_1_bxwb6n.jpg" alt="Composition 1 Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/oxshare-infographic.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/oxshare-infographic.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127723/Comp_1_bxwb6n.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
-                        <h3>Oxshare Infographic</h3>
-                        <p>Financial data visualization and explainer content</p>
+                        <h3>Creative Composition</h3>
+                        <p>Artistic motion graphics composition</p>
                     </div>
                 </div>
 
                 <!-- Project 16 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Adha_Animation_2">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127709/D-Buz_2_zeudnl.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127709/D-Buz_2_zeudnl.jpg" alt="D-Buz Part 2 Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Adha_Animation_2.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Adha_Animation_2.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127709/D-Buz_2_zeudnl.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
-                        <h3>Eid Al-Adha Animation</h3>
-                        <p>Special holiday celebration motion graphics</p>
+                        <h3>D-Buz Part 2</h3>
+                        <p>Continuation of the D-Buz presentation</p>
                     </div>
                 </div>
 
                 <!-- Project 17 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/1st-">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127695/Divercities_2_dzhyc5.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127695/Divercities_2_dzhyc5.jpg" alt="Divercities Part 2 Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/1st-.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/1st-.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127695/Divercities_2_dzhyc5.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
-                        <h3>First Place Animation</h3>
-                        <p>Achievement celebration motion graphics</p>
+                        <h3>Divercities Part 2</h3>
+                        <p>Continuation of the Divercities showcase</p>
                     </div>
                 </div>
 
                 <!-- Project 18 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/ADD_3">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127681/Ls_Trading-_Explainer_Vid_edit_3_dynbsb.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127681/Ls_Trading-_Explainer_Vid_edit_3_dynbsb.jpg" alt="Trading Explainer Part 3 Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/ADD_3.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/ADD_3.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127681/Ls_Trading-_Explainer_Vid_edit_3_dynbsb.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
-                        <h3>Additional Content</h3>
-                        <p>Supplementary motion graphics and animations</p>
+                        <h3>Trading Explainer Part 3</h3>
+                        <p>Further explanation of trading concepts</p>
                     </div>
                 </div>
 
                 <!-- Project 19 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/Comp_1">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127702/Ramadan_1_jqxevk.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127702/Ramadan_1_jqxevk.jpg" alt="Ramadan Animation Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/Comp_1.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/Comp_1.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127702/Ramadan_1_jqxevk.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
-                        <h3>Composition Showcase</h3>
-                        <p>Creative motion graphics composition</p>
+                        <h3>Ramadan Animation</h3>
+                        <p>Special Ramadan celebration motion graphics</p>
                     </div>
                 </div>
 
                 <!-- Project 20 -->
                 <div class="project-item">
-                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1/motion-infographic/jeish">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127676/Maonocaster_peveut.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127676/Maonocaster_peveut.jpg" alt="Maonocaster Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
-                        <video preload="none" poster="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1/motion-infographic/jeish.jpg">
-                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto/v1/motion-infographic/jeish.mp4" type="video/mp4">
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127676/Maonocaster_peveut.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                     <div class="project-info">
-                        <h3>Military Presentation</h3>
-                        <p>Professional motion graphics for military content</p>
+                        <h3>Maonocaster Showcase</h3>
+                        <p>Product demonstration with dynamic effects</p>
+                    </div>
+                </div>
+
+                <!-- Project 21 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127647/black_friday-arabic_c4dyd9.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127647/black_friday-arabic_c4dyd9.jpg" alt="Black Friday Arabic Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127647/black_friday-arabic_c4dyd9.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Black Friday Arabic</h3>
+                        <p>Arabic promotional animation for Black Friday</p>
+                    </div>
+                </div>
+
+                <!-- Project 22 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127625/Mediaology_x_Manar_Infographic_Final_1_2_h02wtg.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127625/Mediaology_x_Manar_Infographic_Final_1_2_h02wtg.jpg" alt="Mediaology Infographic Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127625/Mediaology_x_Manar_Infographic_Final_1_2_h02wtg.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Mediaology x Manar</h3>
+                        <p>Collaborative infographic project with dynamic visuals</p>
+                    </div>
+                </div>
+
+                <!-- Project 23 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127587/jeish_wjpedd.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127587/jeish_wjpedd.jpg" alt="Military Animation Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127587/jeish_wjpedd.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Military Animation</h3>
+                        <p>Professional military-themed motion graphics</p>
+                    </div>
+                </div>
+
+                <!-- Project 24 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127552/Miss_Janoub_StayTuned_is354c.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127552/Miss_Janoub_StayTuned_is354c.jpg" alt="Miss Janoub Stay Tuned Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127552/Miss_Janoub_StayTuned_is354c.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Miss Janoub Teaser</h3>
+                        <p>Engaging teaser animation for upcoming event</p>
+                    </div>
+                </div>
+
+                <!-- Project 25 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127539/ADD_3_hujbnq.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127539/ADD_3_hujbnq.jpg" alt="Additional Content 3 Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127539/ADD_3_hujbnq.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Additional Content 3</h3>
+                        <p>Supplementary motion graphics and animations</p>
+                    </div>
+                </div>
+
+                <!-- Project 26 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127514/tfaily-Labour_Day_xknroz.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127514/tfaily-Labour_Day_xknroz.jpg" alt="Labour Day Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127514/tfaily-Labour_Day_xknroz.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Labour Day Animation</h3>
+                        <p>Special celebration of Labour Day</p>
+                    </div>
+                </div>
+
+                <!-- Project 27 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127466/Adha_Animation_2_c0ym27.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127466/Adha_Animation_2_c0ym27.jpg" alt="Adha Animation Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127466/Adha_Animation_2_c0ym27.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Eid Al-Adha Animation</h3>
+                        <p>Festive celebration of Eid Al-Adha</p>
+                    </div>
+                </div>
+
+                <!-- Project 28 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127462/نجمة_الصباح_vwozks.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127462/نجمة_الصباح_vwozks.jpg" alt="Morning Star Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127462/نجمة_الصباح_vwozks.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Morning Star</h3>
+                        <p>Artistic morning-themed animation</p>
+                    </div>
+                </div>
+
+                <!-- Project 29 -->
+                <div class="project-item">
+                    <div class="video-wrapper loading" data-video-url="https://res.cloudinary.com/dgdihng02/video/upload/v1753127461/إستراتيجية_4_English_hfzj18.mp4">
+                        <img class="thumbnail" src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127461/إستراتيجية_4_English_hfzj18.jpg" alt="Strategy 4 English Video Thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <video preload="none" controls>
+                            <source data-src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto/v1753127461/إستراتيجية_4_English_hfzj18.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="project-info">
+                        <h3>Strategy Guide 4</h3>
+                        <p>English version of strategic content</p>
                     </div>
                 </div>
             </div>
@@ -476,59 +746,115 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Masonry layout
+            var grid = document.querySelector('.projects-grid');
+            var masonry = new Masonry(grid, {
+                itemSelector: '.project-item',
+                percentPosition: true,
+                gutter: 0
+            });
+
+            // Initialize video functionality
             const videoWrappers = document.querySelectorAll('.video-wrapper');
             
             videoWrappers.forEach(wrapper => {
                 const video = wrapper.querySelector('video');
                 const playButton = wrapper.querySelector('.play-button');
+                const thumbnail = wrapper.querySelector('.thumbnail');
+                const source = video.querySelector('source');
                 
-                // Load video only when play is clicked
+                // Set initial state
+                if (thumbnail) {
+                    wrapper.classList.remove('loading');
+                    
+                    // Set wrapper height based on thumbnail aspect ratio
+                    const setAspectRatio = () => {
+                        const aspectRatio = thumbnail.naturalHeight / thumbnail.naturalWidth;
+                        wrapper.style.paddingTop = (aspectRatio * 100) + '%';
+                        masonry.layout();
+                    };
+
+                    if (thumbnail.complete) {
+                        setAspectRatio();
+                    } else {
+                        thumbnail.addEventListener('load', setAspectRatio);
+                    }
+                }
+
+                // Load and play video only when play button is clicked
                 if (playButton) {
                     playButton.addEventListener('click', function() {
-                        const source = video.querySelector('source');
-                        if (source.dataset.src) {
-                            source.src = source.dataset.src;
-                            video.load();
-                            video.play();
-                            wrapper.classList.add('playing');
-                            wrapper.classList.remove('loading');
+                        if (source && source.dataset.src && !wrapper.classList.contains('playing')) {
+                            // Set the actual source if not already set
+                            if (!source.src) {
+                                source.src = source.dataset.src;
+                                video.load();
+                            }
+                            
+                            // Show loading state
+                            wrapper.classList.add('loading');
+                            
+                            // When video metadata is loaded
+                            video.addEventListener('loadedmetadata', function onLoadedMetadata() {
+                                const aspectRatio = video.videoHeight / video.videoWidth;
+                                wrapper.style.paddingTop = (aspectRatio * 100) + '%';
+                                masonry.layout();
+                                video.removeEventListener('loadedmetadata', onLoadedMetadata);
+                            });
+                            
+                            // When video is ready to play
+                            video.addEventListener('canplay', function onCanPlay() {
+                                wrapper.classList.remove('loading');
+                                wrapper.classList.add('playing');
+                                video.style.display = 'block';
+                                if (thumbnail) thumbnail.style.display = 'none';
+                                video.play().catch(function(error) {
+                                    console.log("Video play failed:", error);
+                                });
+                                masonry.layout();
+                                video.removeEventListener('canplay', onCanPlay);
+                            });
                         }
                     });
                 }
 
-                // Remove loading state when poster is loaded
-                video.addEventListener('loadeddata', function() {
-                    wrapper.classList.remove('loading');
-                });
-
                 // Handle video end
                 video.addEventListener('ended', function() {
                     wrapper.classList.remove('playing');
-                    playButton.style.display = 'flex';
-                });
-            });
-
-            // Intersection Observer for lazy loading video posters
-            const videoObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const wrapper = entry.target;
-                        const video = wrapper.querySelector('video');
-                        if (video.getAttribute('poster') === '') {
-                            const posterUrl = wrapper.dataset.posterUrl;
-                            if (posterUrl) {
-                                video.setAttribute('poster', posterUrl);
-                            }
-                        }
-                        observer.unobserve(wrapper);
+                    video.style.display = 'none';
+                    if (thumbnail) {
+                        thumbnail.style.display = 'block';
+                        const aspectRatio = thumbnail.naturalHeight / thumbnail.naturalWidth;
+                        wrapper.style.paddingTop = (aspectRatio * 100) + '%';
                     }
+                    if (playButton) {
+                        playButton.style.display = 'flex';
+                    }
+                    masonry.layout();
                 });
-            }, {
-                rootMargin: '50px 0px',
-                threshold: 0.1
+
+                // Handle errors
+                video.addEventListener('error', function() {
+                    wrapper.classList.remove('loading');
+                    wrapper.classList.remove('playing');
+                    video.style.display = 'none';
+                    if (thumbnail) {
+                        thumbnail.style.display = 'block';
+                        const aspectRatio = thumbnail.naturalHeight / thumbnail.naturalWidth;
+                        wrapper.style.paddingTop = (aspectRatio * 100) + '%';
+                    }
+                    if (playButton) {
+                        playButton.style.display = 'flex';
+                    }
+                    console.error('Error loading video:', source.dataset.src);
+                    masonry.layout();
+                });
             });
 
-            videoWrappers.forEach(wrapper => videoObserver.observe(wrapper));
+            // Re-layout Masonry when all images are loaded
+            imagesLoaded(grid).on('progress', function() {
+                masonry.layout();
+            });
         });
     </script>
 </body>
