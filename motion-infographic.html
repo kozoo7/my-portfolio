@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motion Graphics & Infographic | Creative Portfolio</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- Basic Favicon -->
+    <link rel="icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABwcHCmdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cHBwpgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" type="image/x-icon">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -17,8 +14,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Masonry -->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <script src="js/masonry.js"></script>
     <style>
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .projects {
+            padding: 60px 0;
+            background: #000;
+        }
+
+        .projects-grid {
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .project-item {
+            width: calc(33.333% - 20px);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
         .video-wrapper {
             position: relative;
             width: 100%;
@@ -29,19 +52,24 @@
             overflow: hidden;
             margin-bottom: 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: box-shadow 0.3s ease;
         }
 
-        .video-wrapper::before {
+        .video-wrapper.loading::before {
             content: '';
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
             z-index: 1;
-            pointer-events: none;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
         .video-wrapper video {
@@ -52,10 +80,6 @@
             height: 100%;
             background: #000;
             object-fit: contain;
-        }
-
-        .video-wrapper.playing video {
-            display: block;
         }
 
         .video-wrapper .thumbnail {
@@ -84,13 +108,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
             z-index: 2;
-        }
-
-        .video-wrapper .play-button:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: translate(-50%, -50%) scale(1.1);
         }
 
         .video-wrapper .play-button i {
@@ -103,44 +121,6 @@
             display: none;
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            padding: 20px;
-            margin: 0 auto;
-            max-width: 1800px;
-        }
-
-        @media (max-width: 1600px) {
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 20px;
-                padding: 15px;
-            }
-        }
-
-        .project-item {
-            background: transparent;
-            border-radius: 8px;
-            position: relative;
-            break-inside: avoid;
-            margin-bottom: 25px;
-            transform: translateZ(0);
-            will-change: transform;
-            transition: transform 0.3s ease;
-        }
-
-        .project-item:hover {
-            transform: translateY(-5px);
-        }
-
         .project-info {
             position: absolute;
             bottom: 0;
@@ -150,7 +130,6 @@
             background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
             z-index: 2;
             pointer-events: none;
-            transform: translateZ(0);
         }
 
         .project-info h3 {
@@ -159,7 +138,6 @@
             color: #FFD700;
             font-weight: 500;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-            letter-spacing: 0.5px;
         }
 
         .project-info p {
@@ -170,18 +148,63 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
-        .container {
-            max-width: 1800px;
-            margin: 0 auto;
-            padding: 0 20px;
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .projects {
+                padding: 40px 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+                padding: 15px;
+            }
+
+            .project-item {
+                width: calc(50% - 20px);
+            }
+
+            .video-wrapper,
+            .video-wrapper video,
+            .video-wrapper .thumbnail {
+                max-height: calc(100vh - 150px);
+            }
+
+            .play-button {
+                width: 60px;
+                height: 60px;
+            }
+
+            .play-button i {
+                font-size: 24px;
+            }
+
+            .project-info {
+                padding: 15px;
+            }
+
+            .project-info h3 {
+                font-size: 1em;
+            }
+
+            .project-info p {
+                font-size: 0.85em;
+            }
         }
 
-        .projects {
-            padding: 40px 0;
-            overflow: hidden;
-        }
+        /* Mobile view only */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
 
-        @media (max-width: 480px) {
+            .projects {
+                padding: 30px 0;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
@@ -189,11 +212,38 @@
             }
 
             .project-item {
-                margin-bottom: 20px;
+                width: calc(100% - 20px);
+                border-radius: 10px;
             }
 
-            .projects {
-                padding: 20px 0;
+            .video-wrapper,
+            .video-wrapper video,
+            .video-wrapper .thumbnail {
+                max-height: calc(100vh - 100px);
+                border-radius: 10px;
+            }
+
+            .play-button {
+                width: 50px;
+                height: 50px;
+            }
+
+            .play-button i {
+                font-size: 20px;
+            }
+
+            .project-info {
+                padding: 12px;
+            }
+
+            .project-info h3 {
+                font-size: 0.95em;
+                margin-bottom: 6px;
+            }
+
+            .project-info p {
+                font-size: 0.8em;
+                line-height: 1.4;
             }
         }
     </style>
@@ -239,13 +289,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753128085/Copy_Trade_ogjnc0.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128085/Copy_Trade_ogjnc0.jpg" 
                              alt="Copy Trade Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753128085/Copy_Trade_ogjnc0.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128085/Copy_Trade_ogjnc0.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -259,13 +309,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753128082/eid_-noah_aw7gs7.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128082/eid_-noah_aw7gs7.jpg" 
                              alt="Eid Celebration Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753128082/eid_-noah_aw7gs7.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128082/eid_-noah_aw7gs7.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -279,13 +329,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753128075/الرجل_المشنوق_colhaj.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128075/الرجل_المشنوق_colhaj.jpg" 
                              alt="Trading Pattern Analysis Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753128075/الرجل_المشنوق_colhaj.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128075/الرجل_المشنوق_colhaj.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -299,13 +349,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753128069/1st-_w29wqf.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128069/1st-_w29wqf.jpg" 
                              alt="First Place Animation Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753128069/1st-_w29wqf.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128069/1st-_w29wqf.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -319,13 +369,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753128057/FOMO_zfogou.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128057/FOMO_zfogou.jpg" 
                              alt="FOMO Concept Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753128057/FOMO_zfogou.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128057/FOMO_zfogou.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -339,13 +389,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127985/Blanket_hijckz.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127985/Blanket_hijckz.jpg" 
                              alt="Product Showcase Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127985/Blanket_hijckz.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127985/Blanket_hijckz.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -359,13 +409,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127942/oxshare-infographic_rqv1bu.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127942/oxshare-infographic_rqv1bu.jpg" 
                              alt="Oxshare Infographic Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127942/oxshare-infographic_rqv1bu.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127942/oxshare-infographic_rqv1bu.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -379,13 +429,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127886/D-Buz_zeudnl.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127886/D-Buz_zeudnl.jpg" 
                              alt="D-Buz Presentation Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127886/D-Buz_zeudnl.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127886/D-Buz_zeudnl.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -399,13 +449,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127873/Divercities_sample_vid_dzhyc5.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127873/Divercities_sample_vid_dzhyc5.jpg" 
                              alt="Divercities Showcase Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127873/Divercities_sample_vid_dzhyc5.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127873/Divercities_sample_vid_dzhyc5.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -419,13 +469,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.jpg" 
                              alt="Trading Explainer Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -439,13 +489,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127810/International_teams_2_ru1bqm.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127810/International_teams_2_ru1bqm.jpg" 
                              alt="International Teams Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127810/International_teams_2_ru1bqm.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127810/International_teams_2_ru1bqm.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -459,13 +509,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127777/Copy_Trade_1_y4oqve.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127777/Copy_Trade_1_y4oqve.jpg" 
                              alt="Copy Trading Part 1 Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127777/Copy_Trade_1_y4oqve.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127777/Copy_Trade_1_y4oqve.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -479,13 +529,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127754/MIss_Janoub_1st_Vid_uz0wh5.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127754/MIss_Janoub_1st_Vid_uz0wh5.jpg" 
                              alt="Miss Janoub Campaign Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127754/MIss_Janoub_1st_Vid_uz0wh5.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127754/MIss_Janoub_1st_Vid_uz0wh5.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -499,13 +549,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127737/Christmas_Oxshare_bhqkez.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127737/Christmas_Oxshare_bhqkez.jpg" 
                              alt="Christmas Celebration Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127737/Christmas_Oxshare_bhqkez.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127737/Christmas_Oxshare_bhqkez.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -519,13 +569,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127723/Comp_1_bxwb6n.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127723/Comp_1_bxwb6n.jpg" 
                              alt="Creative Composition Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127723/Comp_1_bxwb6n.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127723/Comp_1_bxwb6n.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -539,13 +589,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127709/D-Buz_2_zeudnl.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127886/D-Buz_zeudnl.jpg" 
                              alt="D-Buz Part 2 Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127709/D-Buz_2_zeudnl.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127886/D-Buz_zeudnl.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -559,13 +609,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127695/Divercities_2_dzhyc5.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127873/Divercities_sample_vid_dzhyc5.jpg" 
                              alt="Divercities Part 2 Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127695/Divercities_2_dzhyc5.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127873/Divercities_sample_vid_dzhyc5.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -579,13 +629,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127681/Ls_Trading-_Explainer_Vid_edit_3_dynbsb.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.jpg" 
                              alt="Trading Explainer Part 3 Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127681/Ls_Trading-_Explainer_Vid_edit_3_dynbsb.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -599,13 +649,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127702/Ramadan_1_jqxevk.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127702/Ramadan_1_jqxevk.jpg" 
                              alt="Ramadan Animation Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127702/Ramadan_1_jqxevk.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127702/Ramadan_1_jqxevk.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -619,13 +669,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127676/Maonocaster_peveut.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127676/Maonocaster_peveut.jpg" 
                              alt="Maonocaster Showcase Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127676/Maonocaster_peveut.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127676/Maonocaster_peveut.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -639,13 +689,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127647/black_friday-arabic_c4dyd9.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127647/black_friday-arabic_c4dyd9.jpg" 
                              alt="Black Friday Arabic Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127647/black_friday-arabic_c4dyd9.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127647/black_friday-arabic_c4dyd9.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -659,13 +709,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127625/Mediaology_x_Manar_Infographic_Final_1_2_h02wtg.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127625/Mediaology_x_Manar_Infographic_Final_1_2_h02wtg.jpg" 
                              alt="Mediaology x Manar Infographic Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127625/Mediaology_x_Manar_Infographic_Final_1_2_h02wtg.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127625/Mediaology_x_Manar_Infographic_Final_1_2_h02wtg.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -679,13 +729,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127587/jeish_wjpedd.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127587/jeish_wjpedd.jpg" 
                              alt="Military Animation Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127587/jeish_wjpedd.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127587/jeish_wjpedd.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -699,13 +749,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127552/Miss_Janoub_StayTuned_is354c.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127552/Miss_Janoub_StayTuned_is354c.jpg" 
                              alt="Miss Janoub Teaser Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127552/Miss_Janoub_StayTuned_is354c.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127552/Miss_Janoub_StayTuned_is354c.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -719,13 +769,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127539/ADD_3_hujbnq.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127539/ADD_3_hujbnq.jpg" 
                              alt="Additional Content 3 Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127539/ADD_3_hujbnq.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127539/ADD_3_hujbnq.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -739,13 +789,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127514/tfaily-Labour_Day_xknroz.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127514/tfaily-Labour_Day_xknroz.jpg" 
                              alt="Labour Day Animation Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127514/tfaily-Labour_Day_xknroz.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127514/tfaily-Labour_Day_xknroz.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -759,13 +809,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127466/Adha_Animation_2_c0ym27.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127466/Adha_Animation_2_c0ym27.jpg" 
                              alt="Eid Al-Adha Animation Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127466/Adha_Animation_2_c0ym27.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127466/Adha_Animation_2_c0ym27.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -779,13 +829,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127462/نجمة_الصباح_vwozks.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127462/نجمة_الصباح_vwozks.jpg" 
                              alt="Morning Star Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127462/نجمة_الصباح_vwozks.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127462/نجمة_الصباح_vwozks.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -799,13 +849,13 @@
                 <div class="project-item">
                     <div class="video-wrapper">
                         <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_800/v1753127461/إستراتيجية_4_English_hfzj18.jpg" 
+                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127461/إستراتيجية_4_English_hfzj18.jpg" 
                              alt="Strategy Guide 4 Video Thumbnail">
                         <div class="play-button">
                             <i class="fas fa-play"></i>
                         </div>
                         <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/v1753127461/إستراتيجية_4_English_hfzj18.mp4" type="video/mp4">
+                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127461/إستراتيجية_4_English_hfzj18.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -833,120 +883,133 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Masonry layout
-            var grid = document.querySelector('.projects-grid');
-            var masonry = new Masonry(grid, {
+            const grid = document.querySelector('.projects-grid');
+            const masonry = new Masonry(grid, {
                 itemSelector: '.project-item',
                 columnWidth: '.project-item',
                 percentPosition: true,
-                transitionDuration: '0.3s',
-                initLayout: true,
-                horizontalOrder: true,
-                gutter: 25,
-                fitWidth: true
+                gutter: 20,
+                initLayout: false
             });
 
-            // Initialize video functionality
             const videoWrappers = document.querySelectorAll('.video-wrapper');
-            
+            let currentlyPlaying = null;
+            let loadedMediaCount = 0;
+            const totalMediaCount = videoWrappers.length;
+
+            function checkIfAllLoaded() {
+                loadedMediaCount++;
+                if (loadedMediaCount === totalMediaCount) {
+                    masonry.layout();
+                }
+            }
+
             videoWrappers.forEach(wrapper => {
+                wrapper.classList.add('loading');
                 const video = wrapper.querySelector('video');
-                const playButton = wrapper.querySelector('.play-button');
                 const thumbnail = wrapper.querySelector('img.thumbnail');
+                const source = video.querySelector('source');
+
+                // Set video source to 720p version
+                if (source) {
+                    const originalSrc = source.getAttribute('src');
+                    source.setAttribute('src', originalSrc.replace('/upload/', '/upload/w_1280,h_720,c_limit/'));
+                }
 
                 // Function to set aspect ratio
                 function setAspectRatio(element) {
-                    if (element instanceof HTMLVideoElement) {
+                    if (element instanceof HTMLVideoElement && element.videoHeight && element.videoWidth) {
                         const ratio = (element.videoHeight / element.videoWidth) * 100;
                         wrapper.style.paddingTop = ratio + '%';
-                    } else if (element instanceof HTMLImageElement) {
+                        wrapper.classList.remove('loading');
+                        masonry.layout();
+                    } else if (element instanceof HTMLImageElement && element.naturalHeight && element.naturalWidth) {
                         const ratio = (element.naturalHeight / element.naturalWidth) * 100;
                         wrapper.style.paddingTop = ratio + '%';
+                        wrapper.classList.remove('loading');
+                        masonry.layout();
                     }
-                    masonry.layout();
                 }
 
                 // Set initial aspect ratio from thumbnail
                 if (thumbnail) {
                     if (thumbnail.complete) {
                         setAspectRatio(thumbnail);
+                        checkIfAllLoaded();
                     } else {
-                        thumbnail.onload = () => setAspectRatio(thumbnail);
+                        thumbnail.onload = () => {
+                            setAspectRatio(thumbnail);
+                            checkIfAllLoaded();
+                        };
                     }
                 }
-                
-                wrapper.addEventListener('click', function() {
-                    if (!wrapper.classList.contains('playing')) {
-                        wrapper.classList.add('playing');
-                        
-                        // Set video source if not already set
-                        if (!video.src) {
-                            const source = video.querySelector('source');
-                            video.src = source.getAttribute('src');
-                        }
 
-                        // Handle video metadata load
-                        video.addEventListener('loadedmetadata', function onMetadata() {
-                            setAspectRatio(video);
-                            video.removeEventListener('loadedmetadata', onMetadata);
-                        });
+                wrapper.addEventListener('click', async function() {
+                    if (currentlyPlaying && currentlyPlaying !== wrapper) {
+                        const otherVideo = currentlyPlaying.querySelector('video');
+                        otherVideo.pause();
+                        otherVideo.currentTime = 0;
+                        currentlyPlaying.classList.remove('playing');
+                    }
 
-                        video.play().catch(function(error) {
-                            console.error('Error playing video:', error);
-                            wrapper.classList.remove('playing');
-                        });
-                    } else {
-                        if (video.paused) {
-                            video.play();
+                    const isPlaying = wrapper.classList.contains('playing');
+
+                    try {
+                        if (!isPlaying) {
+                            wrapper.classList.add('playing');
+                            currentlyPlaying = wrapper;
+
+                            if (!video.src && source) {
+                                video.src = source.getAttribute('src');
+                                await new Promise((resolve) => {
+                                    video.addEventListener('loadedmetadata', function onMetadata() {
+                                        setAspectRatio(video);
+                                        video.removeEventListener('loadedmetadata', onMetadata);
+                                        resolve();
+                                    });
+                                });
+                            }
+
+                            await video.play();
                         } else {
                             video.pause();
                             wrapper.classList.remove('playing');
+                            if (currentlyPlaying === wrapper) {
+                                currentlyPlaying = null;
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Video playback error:', error);
+                        wrapper.classList.remove('playing');
+                        if (currentlyPlaying === wrapper) {
+                            currentlyPlaying = null;
                         }
                     }
                 });
 
-                video.addEventListener('ended', function() {
+                // Handle video end
+                video.addEventListener('ended', () => {
                     wrapper.classList.remove('playing');
-                    if (thumbnail) {
-                        setAspectRatio(thumbnail);
+                    if (currentlyPlaying === wrapper) {
+                        currentlyPlaying = null;
                     }
                 });
 
-                // Handle window resize
-                window.addEventListener('resize', function() {
-                    if (wrapper.classList.contains('playing')) {
-                        setAspectRatio(video);
-                    } else if (thumbnail) {
-                        setAspectRatio(thumbnail);
+                // Handle video error
+                video.addEventListener('error', () => {
+                    wrapper.classList.remove('playing');
+                    if (currentlyPlaying === wrapper) {
+                        currentlyPlaying = null;
                     }
                 });
             });
 
-            // Re-layout Masonry when all images are loaded
-            imagesLoaded(grid).on('progress', function() {
-                masonry.layout();
-            });
-
-            // Re-layout on window resize
+            // Handle window resize
             let resizeTimer;
-            window.addEventListener('resize', function() {
+            window.addEventListener('resize', () => {
                 clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function() {
-                    masonry.layout();
-                }, 100);
+                resizeTimer = setTimeout(() => masonry.layout(), 250);
             });
-
-            // Smooth scroll to top
-            const backToTop = document.querySelector('#back-to-top');
-            if (backToTop) {
-                backToTop.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
         });
     </script>
 </body>
