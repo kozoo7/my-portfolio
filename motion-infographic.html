@@ -14,239 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Masonry -->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <script src="js/masonry.js"></script>
-    <style>
-        .container {
-            max-width: 1800px;
-            margin: 0 auto;
-            padding: 0 30px;
-        }
-
-        .projects {
-            padding: 60px 0;
-            background: #000;
-        }
-
-        .projects-grid {
-            width: 100%;
-            max-width: 1800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .project-item {
-            width: calc(33.333% - 20px);
-            margin-bottom: 25px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            height: 0;
-            background: #000;
-            cursor: pointer;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .video-wrapper.loading::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-            z-index: 1;
-        }
-
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        .video-wrapper video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            object-fit: contain;
-        }
-
-        .video-wrapper .thumbnail {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #000;
-        }
-
-        .video-wrapper.playing .thumbnail {
-            display: none;
-        }
-
-        .video-wrapper .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-        }
-
-        .video-wrapper .play-button i {
-            color: white;
-            font-size: 24px;
-            margin-left: 4px;
-        }
-
-        .video-wrapper.playing .play-button {
-            display: none;
-        }
-
-        .project-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 15px;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .project-info h3 {
-            margin: 0 0 4px 0;
-            font-size: 1em;
-            color: #FFD700;
-            font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
-
-        .project-info p {
-            margin: 0;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.85em;
-            line-height: 1.4;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
-
-        @media (max-width: 1024px) {
-            .container {
-                padding: 0 20px;
-            }
-
-            .projects {
-                padding: 40px 0;
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
-                padding: 15px;
-            }
-
-            .project-item {
-                width: calc(50% - 20px);
-            }
-
-            .video-wrapper,
-            .video-wrapper video,
-            .video-wrapper .thumbnail {
-                max-height: calc(100vh - 150px);
-            }
-
-            .play-button {
-                width: 60px;
-                height: 60px;
-            }
-
-            .play-button i {
-                font-size: 24px;
-            }
-
-            .project-info {
-                padding: 15px;
-            }
-
-            .project-info h3 {
-                font-size: 1em;
-            }
-
-            .project-info p {
-                font-size: 0.85em;
-            }
-        }
-
-        /* Mobile view only */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .projects {
-                padding: 30px 0;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                padding: 10px;
-            }
-
-            .project-item {
-                width: calc(100% - 20px);
-                border-radius: 10px;
-            }
-
-            .video-wrapper,
-            .video-wrapper video,
-            .video-wrapper .thumbnail {
-                max-height: calc(100vh - 100px);
-                border-radius: 10px;
-            }
-
-            .play-button {
-                width: 50px;
-                height: 50px;
-            }
-
-            .play-button i {
-                font-size: 20px;
-            }
-
-            .project-info {
-                padding: 12px;
-            }
-
-            .project-info h3 {
-                font-size: 0.95em;
-                margin-bottom: 6px;
-            }
-
-            .project-info p {
-                font-size: 0.8em;
-                line-height: 1.4;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -267,7 +35,7 @@
     <section class="category-header">
         <div class="container">
             <h1>Motion Graphics & Infographic</h1>
-            <p>Dynamic visual storytelling through motion and information design</p>
+            <p>Dynamic visual storytelling and data visualization</p>
             <div class="category-select">
                 <select id="categorySelect" onchange="window.location.href=this.value">
                     <option value="motion-infographic.html" selected>Motion Graphics/Infographic</option>
@@ -284,589 +52,840 @@
     <!-- Projects Grid -->
     <section class="projects">
         <div class="container">
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128085/Copy_Trade_ogjnc0.jpg" 
-                             alt="Copy Trade Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+            <!-- Info Graphic Category -->
+            <div class="category-section">
+                <h2 class="category-title" onclick="toggleCategory('info-graphic')">
+                    Info Graphic
+                    <span class="toggle-icon">▼</span>
+                </h2>
+                <div class="projects-grid" id="info-graphic">
+                    <!-- X-mass Offer -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/X-mass Offer.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128085/Copy_Trade_ogjnc0.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>Christmas Offer</h3>
+                            <p>Festive promotional infographic animation</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Copy Trading Explainer</h3>
-                        <p>Educational content about copy trading mechanics</p>
+
+                    <!-- Mediaology x Manar -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/Mediaology x Manar Infographic Final 1_2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Mediaology x Manar</h3>
+                            <p>Collaborative infographic project</p>
+                        </div>
+                    </div>
+
+                    <!-- Morning Star -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/نجمة الصباح.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Morning Star Pattern</h3>
+                            <p>Trading pattern analysis</p>
+                        </div>
+                    </div>
+
+                    <!-- Strategy 4 English -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/إستراتيجية 4 English.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Strategy Guide 4</h3>
+                            <p>Advanced trading strategy</p>
+                        </div>
+                    </div>
+
+                    <!-- Bullish Engulfing -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/الإبتلاع الصعودي.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Bullish Engulfing</h3>
+                            <p>Trading pattern analysis</p>
+                        </div>
+                    </div>
+
+                    <!-- Strategy 1 English -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/إستراتيجية 1 english.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Strategy Guide 1</h3>
+                            <p>Trading strategy explanation</p>
+                        </div>
+                    </div>
+
+                    <!-- Bearish Engulfing -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/الإبتلاع الهبوطي.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Bearish Engulfing</h3>
+                            <p>Trading pattern analysis</p>
+                        </div>
+                    </div>
+
+                    <!-- Oxshare Infographic -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/oxshare-infographic.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Oxshare</h3>
+                            <p>Financial data visualization</p>
+                        </div>
+                    </div>
+
+                    <!-- Miss Janoub -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/MIss Janoub 1st Vid.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Miss Janoub</h3>
+                            <p>Brand campaign infographic</p>
+                        </div>
+                    </div>
+
+                    <!-- Copy Trade -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/Copy Trade.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Copy Trade</h3>
+                            <p>Educational infographic explaining trading concepts</p>
+                        </div>
+                    </div>
+
+                    <!-- FOMO -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/FOMO.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>FOMO</h3>
+                            <p>Market psychology visualization</p>
+                        </div>
+                    </div>
+
+                    <!-- Black Friday Arabic -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/black friday-arabic.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Black Friday Campaign</h3>
+                            <p>Arabic promotional infographic</p>
+                        </div>
+                    </div>
+
+                    <!-- Hanging Man -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Info Graphic/الرجل المشنوق.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-info">
+                            <h3>Hanging Man Pattern</h3>
+                            <p>Trading pattern analysis</p>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Project 2 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128082/eid_-noah_aw7gs7.jpg" 
-                             alt="Eid Celebration Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+            <!-- Motion Graphic Category -->
+            <div class="category-section">
+                <h2 class="category-title" onclick="toggleCategory('motion-graphic')">
+                    Motion Graphic
+                    <span class="toggle-icon">▼</span>
+                </h2>
+                <div class="projects-grid" id="motion-graphic">
+                    <!-- Miss Janoub Stay Tuned -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/Miss Janoub StayTuned.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128082/eid_-noah_aw7gs7.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>Miss Janoub</h3>
+                            <p>Coming soon teaser animation</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Eid Celebration</h3>
-                        <p>Festive motion graphics for holiday greetings</p>
-                    </div>
-                </div>
 
-                <!-- Project 3 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128075/الرجل_المشنوق_colhaj.jpg" 
-                             alt="Trading Pattern Analysis Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- LS Trading -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/Ls Trading- Explainer Vid edit 2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128075/الرجل_المشنوق_colhaj.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>LS Trading</h3>
+                            <p>Trading platform explainer</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Trading Pattern Analysis</h3>
-                        <p>Technical analysis of the Hanging Man pattern in trading</p>
-                    </div>
-                </div>
 
-                <!-- Project 4 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128069/1st-_w29wqf.jpg" 
-                             alt="First Place Animation Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- Blanket -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/Blanket.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128069/1st-_w29wqf.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>Blanket</h3>
+                            <p>Product showcase animation</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>First Place Animation</h3>
-                        <p>Achievement celebration motion graphics</p>
-                    </div>
-                </div>
 
-                <!-- Project 5 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128057/FOMO_zfogou.jpg" 
-                             alt="FOMO Concept Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- International Teams -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/International teams 2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753128057/FOMO_zfogou.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>International Teams</h3>
+                            <p>Global collaboration showcase</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>FOMO Concept</h3>
-                        <p>Engaging explanation of market psychology concepts</p>
-                    </div>
-                </div>
 
-                <!-- Project 6 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127985/Blanket_hijckz.jpg" 
-                             alt="Product Showcase Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- Copy Trade 1 -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/Copy Trade 1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127985/Blanket_hijckz.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>Copy Trade</h3>
+                            <p>Trading platform showcase</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Product Showcase</h3>
-                        <p>Creative product presentation with engaging motion design</p>
-                    </div>
-                </div>
 
-                <!-- Project 7 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127942/oxshare-infographic_rqv1bu.jpg" 
-                             alt="Oxshare Infographic Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- First Place -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/1st-.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127942/oxshare-infographic_rqv1bu.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>First Place</h3>
+                            <p>Achievement celebration animation</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Oxshare Infographic</h3>
-                        <p>Financial data visualization and explainer content</p>
-                    </div>
-                </div>
 
-                <!-- Project 8 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127886/D-Buz_zeudnl.jpg" 
-                             alt="D-Buz Presentation Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- Maonocaster -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/Maonocaster.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127886/D-Buz_zeudnl.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>Maonocaster</h3>
+                            <p>Product demonstration</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>D-Buz Presentation</h3>
-                        <p>Dynamic business presentation with modern motion graphics</p>
-                    </div>
-                </div>
 
-                <!-- Project 9 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127873/Divercities_sample_vid_dzhyc5.jpg" 
-                             alt="Divercities Showcase Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- D-Buz -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/D-Buz.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127873/Divercities_sample_vid_dzhyc5.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>D-Buz</h3>
+                            <p>Brand motion graphics</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Divercities Showcase</h3>
-                        <p>Urban diversity visualization through motion graphics</p>
-                    </div>
-                </div>
 
-                <!-- Project 10 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.jpg" 
-                             alt="Trading Explainer Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- Eid Noah -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/eid -noah.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>Eid Celebration</h3>
+                            <p>Holiday greetings animation</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Trading Explainer</h3>
-                        <p>Clear and engaging explanation of trading concepts</p>
-                    </div>
-                </div>
 
-                <!-- Project 11 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127810/International_teams_2_ru1bqm.jpg" 
-                             alt="International Teams Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- Comp 1 -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/Comp 1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127810/International_teams_2_ru1bqm.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>Composition 1</h3>
+                            <p>Creative motion design</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>International Teams</h3>
-                        <p>Global collaboration visualization with dynamic elements</p>
-                    </div>
-                </div>
 
-                <!-- Project 12 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127777/Copy_Trade_1_y4oqve.jpg" 
-                             alt="Copy Trading Part 1 Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- Ramadan -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/Ramadan_1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127777/Copy_Trade_1_y4oqve.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>Ramadan</h3>
+                            <p>Ramadan celebration animation</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Copy Trading Part 1</h3>
-                        <p>Detailed walkthrough of copy trading features</p>
-                    </div>
-                </div>
 
-                <!-- Project 13 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127754/MIss_Janoub_1st_Vid_uz0wh5.jpg" 
-                             alt="Miss Janoub Campaign Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- Divercities -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/Divercities sample vid.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127754/MIss_Janoub_1st_Vid_uz0wh5.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>Divercities</h3>
+                            <p>Urban diversity showcase</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Miss Janoub Campaign</h3>
-                        <p>Engaging promotional content with dynamic motion design</p>
-                    </div>
-                </div>
 
-                <!-- Project 14 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127737/Christmas_Oxshare_bhqkez.jpg" 
-                             alt="Christmas Celebration Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- Jeish -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/jeish.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127737/Christmas_Oxshare_bhqkez.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>Military</h3>
+                            <p>Military-themed animation</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Christmas Celebration</h3>
-                        <p>Festive holiday animation for Oxshare</p>
-                    </div>
-                </div>
 
-                <!-- Project 15 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127723/Comp_1_bxwb6n.jpg" 
-                             alt="Creative Composition Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- Adha Animation -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/Adha Animation 2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127723/Comp_1_bxwb6n.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="project-info">
+                            <h3>Eid Al-Adha</h3>
+                            <p>Festive celebration animation</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3>Creative Composition</h3>
-                        <p>Artistic motion graphics composition</p>
-                    </div>
-                </div>
 
-                <!-- Project 16 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127886/D-Buz_zeudnl.jpg" 
-                             alt="D-Buz Part 2 Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                    <!-- ADD 3 -->
+                    <div class="project-item">
+                        <div class="video-wrapper">
+                            <video controls preload="metadata">
+                                <source src="./projects/motion-infographic/videos/Motion Graphic/ADD_3.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127886/D-Buz_zeudnl.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>D-Buz Part 2</h3>
-                        <p>Continuation of the D-Buz presentation</p>
-                    </div>
-                </div>
-
-                <!-- Project 17 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127873/Divercities_sample_vid_dzhyc5.jpg" 
-                             alt="Divercities Part 2 Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
+                        <div class="project-info">
+                            <h3>ADD 3</h3>
+                            <p>Creative motion graphics</p>
                         </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127873/Divercities_sample_vid_dzhyc5.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Divercities Part 2</h3>
-                        <p>Continuation of the Divercities showcase</p>
-                    </div>
-                </div>
-
-                <!-- Project 18 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.jpg" 
-                             alt="Trading Explainer Part 3 Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127842/Ls_Trading-_Explainer_Vid_edit_2_dynbsb.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Trading Explainer Part 3</h3>
-                        <p>Further explanation of trading concepts</p>
-                    </div>
-                </div>
-
-                <!-- Project 19 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127702/Ramadan_1_jqxevk.jpg" 
-                             alt="Ramadan Animation Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127702/Ramadan_1_jqxevk.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Ramadan Animation</h3>
-                        <p>Special Ramadan celebration motion graphics</p>
-                    </div>
-                </div>
-
-                <!-- Project 20 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127676/Maonocaster_peveut.jpg" 
-                             alt="Maonocaster Showcase Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127676/Maonocaster_peveut.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Maonocaster Showcase</h3>
-                        <p>Product demonstration with dynamic effects</p>
-                    </div>
-                </div>
-
-                <!-- Project 21 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127647/black_friday-arabic_c4dyd9.jpg" 
-                             alt="Black Friday Arabic Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127647/black_friday-arabic_c4dyd9.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Black Friday Arabic</h3>
-                        <p>Arabic promotional animation for Black Friday</p>
-                    </div>
-                </div>
-
-                <!-- Project 22 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127625/Mediaology_x_Manar_Infographic_Final_1_2_h02wtg.jpg" 
-                             alt="Mediaology x Manar Infographic Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127625/Mediaology_x_Manar_Infographic_Final_1_2_h02wtg.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Mediaology x Manar</h3>
-                        <p>Collaborative infographic project with dynamic visuals</p>
-                    </div>
-                </div>
-
-                <!-- Project 23 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127587/jeish_wjpedd.jpg" 
-                             alt="Military Animation Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127587/jeish_wjpedd.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Military Animation</h3>
-                        <p>Professional military-themed motion graphics</p>
-                    </div>
-                </div>
-
-                <!-- Project 24 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127552/Miss_Janoub_StayTuned_is354c.jpg" 
-                             alt="Miss Janoub Teaser Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127552/Miss_Janoub_StayTuned_is354c.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Miss Janoub Teaser</h3>
-                        <p>Engaging teaser animation for upcoming event</p>
-                    </div>
-                </div>
-
-                <!-- Project 25 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127539/ADD_3_hujbnq.jpg" 
-                             alt="Additional Content 3 Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127539/ADD_3_hujbnq.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Additional Content 3</h3>
-                        <p>Supplementary motion graphics and animations</p>
-                    </div>
-                </div>
-
-                <!-- Project 26 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127514/tfaily-Labour_Day_xknroz.jpg" 
-                             alt="Labour Day Animation Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127514/tfaily-Labour_Day_xknroz.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Labour Day Animation</h3>
-                        <p>Special celebration of Labour Day</p>
-                    </div>
-                </div>
-
-                <!-- Project 27 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127466/Adha_Animation_2_c0ym27.jpg" 
-                             alt="Eid Al-Adha Animation Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127466/Adha_Animation_2_c0ym27.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Eid Al-Adha Animation</h3>
-                        <p>Festive celebration of Eid Al-Adha</p>
-                    </div>
-                </div>
-
-                <!-- Project 28 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127462/نجمة_الصباح_vwozks.jpg" 
-                             alt="Morning Star Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127462/نجمة_الصباح_vwozks.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Morning Star</h3>
-                        <p>Artistic morning-themed animation</p>
-                    </div>
-                </div>
-
-                <!-- Project 29 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <img class="thumbnail" 
-                             src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127461/إستراتيجية_4_English_hfzj18.jpg" 
-                             alt="Strategy Guide 4 Video Thumbnail">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <video controls>
-                            <source src="https://res.cloudinary.com/dgdihng02/video/upload/q_auto,f_auto,w_1280/v1753127461/إستراتيجية_4_English_hfzj18.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Strategy Guide 4</h3>
-                        <p>English version of strategic content</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Updated styles -->
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #40403f;
+            --secondary-color: #FFD700;
+            --text-color: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        /* Projects Grid Layout */
+        .projects {
+            padding: 40px 0;
+            background: var(--primary-color);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .project-item {
+            position: relative;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: auto;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0));
+            transform: translateY(100%);
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .project-item:hover .project-info {
+            transform: translateY(0);
+        }
+
+        .project-info h3 {
+            color: var(--secondary-color);
+            margin: 0 0 8px 0;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .project-info p {
+            color: var(--text-color);
+            margin: 0;
+            font-size: 0.9em;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* Category Section Styles */
+        .category-section {
+            margin-bottom: 30px;
+            transition: margin 0.3s ease;
+        }
+
+        .category-title {
+            font-size: 2em;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category-title:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .toggle-icon {
+            font-size: 0.8em;
+            transition: var(--transition);
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .category-title.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        /* Category Header Styles */
+        .category-header {
+            padding: 120px 0 40px;
+            text-align: center;
+            background: var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,215,0,0.1) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .category-header h1 {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .category-header p {
+            color: var(--text-color);
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .category-select {
+            margin: 1.5rem auto;
+            width: 100%;
+            max-width: 300px;
+            position: relative;
+        }
+
+        .category-select select {
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 1rem;
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            padding-right: 2.5rem;
+        }
+
+        .category-select::after {
+            content: '▼';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-color);
+            pointer-events: none;
+            font-size: 0.8em;
+        }
+
+        /* Loading State */
+        .video-wrapper.loading {
+            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Grid Styles */
+        .projects-grid {
+            width: 100%;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .projects-grid.collapsed {
+            opacity: 0;
+            visibility: hidden;
+            height: 0;
+            margin: 0;
+            padding: 0;
+            pointer-events: none;
+            position: absolute;
+        }
+
+        .project-item {
+            width: calc(33.333% - 20px);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #000;
+        }
+
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover .project-info {
+            transform: translateY(0);
+        }
+
+        .project-info h3 {
+            color: #FFD700;
+            margin: 0 0 8px 0;
+            font-size: 1.2em;
+        }
+
+        .project-info p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        /* Category Section Styles */
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 2em;
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .project-item {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-item {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .project-info {
+                transform: translateY(0);
+                background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3));
+            }
+        }
+    </style>
+
+    <!-- Enhanced JavaScript for Masonry and category toggle -->
+    <script>
+        function initMasonry(gridId) {
+            const grid = document.getElementById(gridId);
+            return new Masonry(grid, {
+                itemSelector: '.project-item',
+                columnWidth: '.project-item',
+                percentPosition: true,
+                gutter: 20,
+                transitionDuration: '0.3s'
+            });
+        }
+
+        function toggleCategory(categoryId) {
+            const grid = document.getElementById(categoryId);
+            const title = grid.previousElementSibling;
+            const isCollapsed = grid.classList.contains('collapsed');
+            
+            // Toggle classes
+            grid.classList.toggle('collapsed');
+            title.classList.toggle('collapsed');
+            
+            // Save state to localStorage
+            localStorage.setItem(categoryId + '-collapsed', !isCollapsed);
+
+            // If expanding, reinitialize masonry after a brief delay
+            if (isCollapsed) {
+                grid.style.position = 'relative';
+                setTimeout(() => {
+                    const masonryInstance = initMasonry(categoryId);
+                    // Force layout update
+                    masonryInstance.layout();
+                }, 50);
+            } else {
+                grid.style.position = 'absolute';
+            }
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const categories = ['info-graphic', 'motion-graphic'];
+            const masonryInstances = {};
+
+            categories.forEach(categoryId => {
+                // Restore collapsed state
+                const isCollapsed = localStorage.getItem(categoryId + '-collapsed') === 'true';
+                const grid = document.getElementById(categoryId);
+                const title = grid.previousElementSibling;
+                
+                if (isCollapsed) {
+                    grid.classList.add('collapsed');
+                    title.classList.add('collapsed');
+                    grid.style.position = 'absolute';
+                } else {
+                    // Initialize masonry for expanded categories
+                    grid.style.position = 'relative';
+                    masonryInstances[categoryId] = initMasonry(categoryId);
+                }
+            });
+
+            // Handle video loading states
+            const videoWrappers = document.querySelectorAll('.video-wrapper');
+            videoWrappers.forEach(wrapper => {
+                const video = wrapper.querySelector('video');
+                
+                wrapper.classList.add('loading');
+                
+                video.addEventListener('loadedmetadata', () => {
+                    wrapper.classList.remove('loading');
+                    // Update masonry layout for visible grids
+                    categories.forEach(categoryId => {
+                        const grid = document.getElementById(categoryId);
+                        if (!grid.classList.contains('collapsed') && masonryInstances[categoryId]) {
+                            masonryInstances[categoryId].layout();
+                        }
+                    });
+                });
+                
+                video.addEventListener('error', () => {
+                    wrapper.classList.remove('loading');
+                    wrapper.classList.add('error');
+                });
+            });
+
+            // Handle window resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    categories.forEach(categoryId => {
+                        const grid = document.getElementById(categoryId);
+                        if (!grid.classList.contains('collapsed') && masonryInstances[categoryId]) {
+                            masonryInstances[categoryId].layout();
+                        }
+                    });
+                }, 250);
+            });
+        });
+    </script>
 
     <!-- Footer -->
     <footer class="footer">
@@ -881,136 +900,5 @@
     </button>
 
     <script src="js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const grid = document.querySelector('.projects-grid');
-            const masonry = new Masonry(grid, {
-                itemSelector: '.project-item',
-                columnWidth: '.project-item',
-                percentPosition: true,
-                gutter: 20,
-                initLayout: false
-            });
-
-            const videoWrappers = document.querySelectorAll('.video-wrapper');
-            let currentlyPlaying = null;
-            let loadedMediaCount = 0;
-            const totalMediaCount = videoWrappers.length;
-
-            function checkIfAllLoaded() {
-                loadedMediaCount++;
-                if (loadedMediaCount === totalMediaCount) {
-                    masonry.layout();
-                }
-            }
-
-            videoWrappers.forEach(wrapper => {
-                wrapper.classList.add('loading');
-                const video = wrapper.querySelector('video');
-                const thumbnail = wrapper.querySelector('img.thumbnail');
-                const source = video.querySelector('source');
-
-                // Set video source to 720p version
-                if (source) {
-                    const originalSrc = source.getAttribute('src');
-                    source.setAttribute('src', originalSrc.replace('/upload/', '/upload/w_1280,h_720,c_limit/'));
-                }
-
-                // Function to set aspect ratio
-                function setAspectRatio(element) {
-                    if (element instanceof HTMLVideoElement && element.videoHeight && element.videoWidth) {
-                        const ratio = (element.videoHeight / element.videoWidth) * 100;
-                        wrapper.style.paddingTop = ratio + '%';
-                        wrapper.classList.remove('loading');
-                        masonry.layout();
-                    } else if (element instanceof HTMLImageElement && element.naturalHeight && element.naturalWidth) {
-                        const ratio = (element.naturalHeight / element.naturalWidth) * 100;
-                        wrapper.style.paddingTop = ratio + '%';
-                        wrapper.classList.remove('loading');
-                        masonry.layout();
-                    }
-                }
-
-                // Set initial aspect ratio from thumbnail
-                if (thumbnail) {
-                    if (thumbnail.complete) {
-                        setAspectRatio(thumbnail);
-                        checkIfAllLoaded();
-                    } else {
-                        thumbnail.onload = () => {
-                            setAspectRatio(thumbnail);
-                            checkIfAllLoaded();
-                        };
-                    }
-                }
-
-                wrapper.addEventListener('click', async function() {
-                    if (currentlyPlaying && currentlyPlaying !== wrapper) {
-                        const otherVideo = currentlyPlaying.querySelector('video');
-                        otherVideo.pause();
-                        otherVideo.currentTime = 0;
-                        currentlyPlaying.classList.remove('playing');
-                    }
-
-                    const isPlaying = wrapper.classList.contains('playing');
-
-                    try {
-                        if (!isPlaying) {
-                            wrapper.classList.add('playing');
-                            currentlyPlaying = wrapper;
-
-                            if (!video.src && source) {
-                                video.src = source.getAttribute('src');
-                                await new Promise((resolve) => {
-                                    video.addEventListener('loadedmetadata', function onMetadata() {
-                                        setAspectRatio(video);
-                                        video.removeEventListener('loadedmetadata', onMetadata);
-                                        resolve();
-                                    });
-                                });
-                            }
-
-                            await video.play();
-                        } else {
-                            video.pause();
-                            wrapper.classList.remove('playing');
-                            if (currentlyPlaying === wrapper) {
-                                currentlyPlaying = null;
-                            }
-                        }
-                    } catch (error) {
-                        console.error('Video playback error:', error);
-                        wrapper.classList.remove('playing');
-                        if (currentlyPlaying === wrapper) {
-                            currentlyPlaying = null;
-                        }
-                    }
-                });
-
-                // Handle video end
-                video.addEventListener('ended', () => {
-                    wrapper.classList.remove('playing');
-                    if (currentlyPlaying === wrapper) {
-                        currentlyPlaying = null;
-                    }
-                });
-
-                // Handle video error
-                video.addEventListener('error', () => {
-                    wrapper.classList.remove('playing');
-                    if (currentlyPlaying === wrapper) {
-                        currentlyPlaying = null;
-                    }
-                });
-            });
-
-            // Handle window resize
-            let resizeTimer;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => masonry.layout(), 250);
-            });
-        });
-    </script>
 </body>
 </html> 
