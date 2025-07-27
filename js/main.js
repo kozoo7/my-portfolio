@@ -430,3 +430,31 @@ document.addEventListener('DOMContentLoaded', function() {
         video.controlsList = "nodownload";
     });
 }); 
+
+// Journey Modal Functions
+function openJourneyModal() {
+    const modal = document.getElementById('journeyModal');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeJourneyModal() {
+    const modal = document.getElementById('journeyModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('journeyModal');
+    if (event.target === modal) {
+        closeJourneyModal();
+    }
+}
+
+// Close modal on escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeJourneyModal();
+    }
+}); 

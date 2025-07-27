@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me | Creative Portfolio</title>
     <!-- Basic Favicon -->
-    <link rel="icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABwcHCmdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cHBwpgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" type="image/x-icon">
+    <link rel="icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABwcHCmdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cHBwpgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" type="image/x-icon">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -34,31 +34,134 @@
             <h1 class="page-title">Get to Know Me Better</h1>
             
             <!-- CV Download Button -->
-            <div style="text-align: center; margin: 2rem 0 4rem;">
+            <div class="cv-download-container">
                 <a href="assets/Noah-CV.pdf" download class="cv-download-btn allow-download">
                     <i class="fas fa-download"></i> Download CV
                 </a>
             </div>
             
             <div class="about-grid">
-                <div class="about-card">
-                    <h2>My Journey</h2>
-                    <p>Detailed description of your professional journey, experiences, and milestones.</p>
+                <div class="about-card main-card">
+                    <h2>My Path: The Short Version</h2>
+                    <p class="path-intro">With over a decade of experience in design and visual communication, I've evolved from a passionate creative to a versatile Art Director. Here's my story in milestones:</p>
+                    <div class="journey-preview">
+                        <ul class="achievement-list">
+                            <li>Foundation Years (2013-2015) - Junior Designer & Photography</li>
+                            <li>Building Expertise (2015-2017) - Head of Graphics</li>
+                            <li>Digital Transformation (2017-Present) - VFX & UI/UX</li>
+                            <li>Regional Expansion (2019-2021) - International Projects</li>
+                            <li>Leadership & Innovation (2021-Present) - Art Direction</li>
+                        </ul>
+                        <button class="view-journey-btn" onclick="openJourneyModal()">
+                            <span>Read the Full Story</span>
+                            <i class="fas fa-book-open"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="about-card">
+
+                <!-- Journey Modal -->
+                <div id="journeyModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal" onclick="closeJourneyModal()">&times;</span>
+                        <div class="modal-body">
+                            <h2>The Complete Path: From Design to Direction</h2>
+                            
+                            <div class="journey-section">
+                                <h3>The Foundation Years (2013-2015)</h3>
+                                <p>My professional journey began as a Junior Graphic Designer in the freelance world, where I learned the fundamental principles that would shape my entire career. During this formative period, I developed my foundational skills in design software and principles, working closely with senior designers who mentored me in the craft.</p>
+                                <p>At El Reda Photography in Lebanon, I explored Photography and Videography, developing crucial skills in visual storytelling, composition, lighting, and narrative flow.</p>
+                                <div class="key-skills">
+                                    <h4>Key Skills Developed:</h4>
+                                    <ul>
+                                        <li>Foundational design principles</li>
+                                        <li>Visual composition and storytelling</li>
+                                        <li>Client communication</li>
+                                        <li>Photo and video editing techniques</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="journey-section">
+                                <h3>Building Expertise (2015-2017)</h3>
+                                <p>At Al-Deraset in Lebanon, I progressed from Graphic Designer to Head of Graphic, marking a significant leap in my professional development. I innovated new printing methods, reducing costs while maintaining quality, and supervised the production of diverse print materials.</p>
+                                <div class="key-skills">
+                                    <h4>Key Skills Developed:</h4>
+                                    <ul>
+                                        <li>Leadership and team management</li>
+                                        <li>Strategic workflow optimization</li>
+                                        <li>Cost-effective design solutions</li>
+                                        <li>Print production expertise</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="journey-section">
+                                <h3>Digital Transformation & Advanced Specialization (2017-Present)</h3>
+                                <p>This phase marked my embrace of digital design revolution. As a Social Media and UI Designer, I expanded into digital platforms and user interface design, creating compelling content and managing design teams.</p>
+                                <p>From 2020, I specialized in VFX and CGI as a freelance artist, mastering industry-standard software like Adobe After Effects and Blender for international projects.</p>
+                                <div class="key-skills">
+                                    <h4>Key Skills Developed:</h4>
+                                    <ul>
+                                        <li>Social media content strategy and creation</li>
+                                        <li>Advanced VFX and 3D modeling</li>
+                                        <li>Comprehensive UI/UX design principles</li>
+                                        <li>International project management</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="journey-section">
+                                <h3>Regional Expansion (2019-2021)</h3>
+                                <p>Working across the Middle East, including Mercati app in Qatar and Z-Playing Cards in Lebanon, I launched successful projects like "Cedars Playing Cards". At Jawaher Media in Qatar, I created over 200 social media assets, increasing engagement by 40%.</p>
+                                <div class="key-skills">
+                                    <h4>Key Skills Developed:</h4>
+                                    <ul>
+                                        <li>Cultural sensitivity in design</li>
+                                        <li>Large-scale content portfolio management</li>
+                                        <li>Data-driven design strategy</li>
+                                        <li>Brand identity development</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="journey-section">
+                                <h3>Current Excellence (2023-Present)</h3>
+                                <p>As Art Director at Mediaology and Update Digital Marketing, I lead creative vision and execution for digital marketing campaigns while mentoring design teams and implementing innovative design strategies.</p>
+                                <div class="key-skills">
+                                    <h4>Skills Mastery:</h4>
+                                    <ul>
+                                        <li>Design Software: Adobe Creative Suite, Figma, Blender</li>
+                                        <li>Creative Direction & Strategy</li>
+                                        <li>Project Management & Leadership</li>
+                                        <li>Digital Marketing & Content Strategy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-card skills-card">
                     <h2>Skills & Expertise</h2>
                     <div class="skills">
                         <div class="skill-item">
-                            <span>Branding</span>
-                            <div class="progress-bar" data-progress="90"></div>
+                            <span>Motion Graphics & VFX</span>
+                            <div class="progress-bar" data-progress="95"></div>
                         </div>
                         <div class="skill-item">
                             <span>UI/UX Design</span>
                             <div class="progress-bar" data-progress="85"></div>
                         </div>
                         <div class="skill-item">
-                            <span>Print Design</span>
+                            <span>Brand Identity</span>
+                            <div class="progress-bar" data-progress="90"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Art Direction</span>
                             <div class="progress-bar" data-progress="95"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Digital Marketing</span>
+                            <div class="progress-bar" data-progress="85"></div>
                         </div>
                     </div>
                 </div>
@@ -69,51 +172,57 @@
     <!-- Companies Section -->
     <section class="companies-section">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Companies I've Worked With</h2>
+            <h2 class="section-title">Companies I've Worked With</h2>
             <div class="companies-grid">
                 <div class="company-logo-wrapper">
-                    <img src="images/company1-logo.png" alt="Company 1" class="company-logo">
+                    <img src="images/companies/Company Logos-01.png" alt="Company Logo 1" class="company-logo">
                 </div>
                 <div class="company-logo-wrapper">
-                    <img src="images/company2-logo.png" alt="Company 2" class="company-logo">
+                    <img src="images/companies/Company Logos-02.png" alt="Company Logo 2" class="company-logo">
                 </div>
                 <div class="company-logo-wrapper">
-                    <img src="images/company3-logo.png" alt="Company 3" class="company-logo">
+                    <img src="images/companies/Company Logos-03.png" alt="Company Logo 3" class="company-logo">
                 </div>
                 <div class="company-logo-wrapper">
-                    <img src="images/company4-logo.png" alt="Company 4" class="company-logo">
+                    <img src="images/companies/Company Logos-04.png" alt="Company Logo 4" class="company-logo">
                 </div>
                 <div class="company-logo-wrapper">
-                    <img src="images/company5-logo.png" alt="Company 5" class="company-logo">
+                    <img src="images/companies/Company Logos-05.png" alt="Company Logo 5" class="company-logo">
                 </div>
                 <div class="company-logo-wrapper">
-                    <img src="images/company6-logo.png" alt="Company 6" class="company-logo">
+                    <img src="images/companies/Company Logos-06.png" alt="Company Logo 6" class="company-logo">
+                </div>
+                <div class="company-logo-wrapper">
+                    <img src="images/companies/Company Logos-07.png" alt="Company Logo 7" class="company-logo">
+                </div>
+                <div class="company-logo-wrapper">
+                    <img src="images/companies/Company Logos-08.png" alt="Company Logo 8" class="company-logo">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Other Interests & Projects Section -->
+    <!-- Other Interests Section -->
     <section class="other-interests">
         <div class="container">
-            <h2 class="section-title" style="margin-top: 4rem;">Other Interests & Projects</h2>
+            <h2 class="section-title">Other Interests & Projects</h2>
             <div class="hobbies-grid">
                 <div class="hobby-card">
                     <h3>Photography</h3>
-                    <p>My journey in photography and notable projects.</p>
+                    <p>Exploring visual storytelling through the lens, focusing on street photography and documentary projects.</p>
                     <ul class="project-list">
-                        <li>Street Photography Exhibition 2023</li>
-                        <li>Nature Documentary Project</li>
-                        <li>Portrait Photography Workshop</li>
+                        <li>Street Life Documentation Series</li>
+                        <li>Cultural Heritage Project</li>
+                        <li>Urban Architecture Portfolio</li>
                     </ul>
                 </div>
                 <div class="hobby-card">
-                    <h3>Web Development</h3>
-                    <p>Self-taught web development projects and achievements.</p>
+                    <h3>Digital Art & 3D</h3>
+                    <p>Creating immersive digital experiences and 3D artwork for various platforms and purposes.</p>
                     <ul class="project-list">
-                        <li>Personal Blog Development</li>
-                        <li>E-commerce Website</li>
-                        <li>Community Forum Project</li>
+                        <li>3D Character Design</li>
+                        <li>Environmental Visualization</li>
+                        <li>Digital Art Exhibitions</li>
                     </ul>
                 </div>
             </div>
