@@ -8,6 +8,7 @@
     <link rel="icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABwcHCmdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cHBwpgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" type="image/x-icon">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/journey-modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +53,7 @@
                             <li>Regional Expansion (2019-2021) - International Projects</li>
                             <li>Leadership & Innovation (2021-Present) - Art Direction</li>
                         </ul>
-                        <button class="view-journey-btn" onclick="openJourneyModal()">
+                        <button class="view-journey-btn">
                             <span>Read the Full Story</span>
                             <i class="fas fa-book-open"></i>
                         </button>
@@ -62,7 +63,7 @@
                 <!-- Journey Modal -->
                 <div id="journeyModal" class="modal">
                     <div class="modal-content">
-                        <span class="close-modal" onclick="closeJourneyModal()">&times;</span>
+                        <button class="popup-close" aria-label="Close popup">&times;</button>
                         <div class="modal-body">
                             <h2>The Complete Path: From Design to Direction</h2>
                             
@@ -237,5 +238,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/journey-modal.js"></script>
 </body>
 </html> 

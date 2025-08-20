@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Insights | Noah's Creative Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore insights, case studies, and creative process behind motion graphics, VFX, and design projects. Learn about the latest trends and techniques in digital design.">
+    <meta name="keywords" content="design blog, motion graphics insights, VFX case studies, creative process, design tutorials">
+    <meta name="author" content="Noah">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blog & Insights | Noah's Creative Portfolio">
+    <meta property="og:description" content="Explore insights, case studies, and creative process behind motion graphics and design projects.">
+    <meta property="og:image" content="https://kozoo7.github.io/my-portfolio/images/blog-preview.jpg">
+    <meta property="og:url" content="https://kozoo7.github.io/my-portfolio/blog.html">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/your-logo.png" alt="Portfolio Logo" class="logo-image">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#contact" class="contact-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1 class="blog-title">Insights & Case Studies</h1>
+            <p class="blog-subtitle">Exploring the creative process, techniques, and stories behind the projects</p>
+        </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="blog-categories">
+        <div class="container">
+            <div class="category-filters">
+                <button class="category-filter active" data-category="all">All</button>
+                <button class="category-filter" data-category="case-studies">Case Studies</button>
+                <button class="category-filter" data-category="tutorials">Tutorials</button>
+                <button class="category-filter" data-category="insights">Industry Insights</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="blog-grid">
+        <div class="container">
+            <div class="blog-posts">
+                <!-- Featured Post -->
+                <article class="blog-post featured" data-category="case-studies">
+                    <div class="post-image">
+                        <img src="images/blog/featured-post.jpg" alt="Featured Case Study" loading="lazy">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category">Case Study</span>
+                            <span class="post-date">March 19, 2024</span>
+                        </div>
+                        <h2 class="post-title">Creating Immersive Motion Graphics: A Deep Dive</h2>
+                        <p class="post-excerpt">Explore the creative process and technical challenges behind creating engaging motion graphics for brand storytelling.</p>
+                        <a href="blog/motion-graphics-case-study.html" class="read-more">Read Case Study →</a>
+                    </div>
+                </article>
+
+                <!-- Regular Posts -->
+                <article class="blog-post" data-category="tutorials">
+                    <div class="post-image">
+                        <img src="images/blog/tutorial-1.jpg" alt="After Effects Tutorial" loading="lazy">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category">Tutorial</span>
+                            <span class="post-date">March 15, 2024</span>
+                        </div>
+                        <h2 class="post-title">Advanced Animation Techniques in After Effects</h2>
+                        <p class="post-excerpt">Learn professional animation techniques to create smooth and engaging motion graphics.</p>
+                        <a href="blog/after-effects-tutorial.html" class="read-more">Read Tutorial →</a>
+                    </div>
+                </article>
+
+                <article class="blog-post" data-category="insights">
+                    <div class="post-image">
+                        <img src="images/blog/insight-1.jpg" alt="Design Trends" loading="lazy">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category">Industry Insight</span>
+                            <span class="post-date">March 10, 2024</span>
+                        </div>
+                        <h2 class="post-title">The Future of Motion Design: 2024 Trends</h2>
+                        <p class="post-excerpt">Exploring emerging trends and technologies shaping the future of motion design.</p>
+                        <a href="blog/motion-design-trends.html" class="read-more">Read Article →</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button id="load-more" class="load-more-btn">Load More Posts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to receive the latest insights and tutorials</p>
+                <form id="newsletter-form" class="newsletter-form">
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-text">
+                    <h2 class="contact-title">GET IN TOUCH</h2>
+                    <h3 class="contact-subtitle">DON'T BE SHY</h3>
+                    <p class="contact-description">
+                        Feel free to get in touch with me. I am always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+                    </p>
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="info-text">
+                                <span>Email</span>
+                                <a href="mailto:noahadallah1@gmail.com">noahadallah1@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div class="info-text">
+                                <span>WhatsApp</span>
+                                <a href="https://wa.me/96170356651" target="_blank" rel="noopener noreferrer">+961 70 356 651</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Noah's Design. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/main.js" type="module"></script>
+    <script src="js/blog.js" type="module"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/performance-monitor.js" type="module"></script>
+</body>
+</html>

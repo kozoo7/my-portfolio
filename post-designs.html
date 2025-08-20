@@ -8,24 +8,36 @@
     <link rel="icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABwcHCmdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cHBwpgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" type="image/x-icon">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/masonry-grid.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Masonry -->
+    <!-- Masonry and ImagesLoaded -->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="js/masonry.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <style>
         .project-item {
             position: relative;
             overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
         }
+        
         .project-item img {
-            transition: opacity 0.3s ease;
             width: 100%;
             height: auto;
-            background: #f0f0f0;
+            display: block;
+            transition: all 0.3s ease;
         }
+        
+        .project-item:hover img {
+            transform: scale(1.05);
+        }
+
         .project-item.loading::before {
             content: '';
             position: absolute;
@@ -33,13 +45,28 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 75%);
             background-size: 200% 100%;
             animation: loading 1.5s infinite;
         }
+
         @keyframes loading {
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -79,376 +106,109 @@
     <!-- Projects Grid -->
     <section class="projects">
         <div class="container">
-            <div class="projects-grid" data-masonry='{ "itemSelector": ".project-item", "columnWidth": ".project-item", "percentPosition": true }'>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793506/Adams_Posts-02_bwe1ib.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793506/Adams_Posts-02_bwe1ib.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793506/Adams_Posts-02_bwe1ib.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793506/Adams_Posts-02_bwe1ib.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Adams Posts Design"
-                         onload="this.parentElement.classList.remove('loading')">
+            <div class="projects-grid">
+                <div class="grid-sizer"></div>
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Adams Posts-02.jpg" alt="Adams Posts Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793503/Adams_Posts-03_s6fvtq.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793503/Adams_Posts-03_s6fvtq.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793503/Adams_Posts-03_s6fvtq.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793503/Adams_Posts-03_s6fvtq.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Adams Posts Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Adams Posts-03.jpg" alt="Adams Posts Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793487/abo_Ghanem_-08_k6zoui.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793487/abo_Ghanem_-08_k6zoui.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793487/abo_Ghanem_-08_k6zoui.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793487/abo_Ghanem_-08_k6zoui.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Abo Ghanem Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/abo Ghanem -08.jpg" alt="Abo Ghanem Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793431/abo_Ghanem_-07_kngykk.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793431/abo_Ghanem_-07_kngykk.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793431/abo_Ghanem_-07_kngykk.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793431/abo_Ghanem_-07_kngykk.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Abo Ghanem Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/abo Ghanem -07.jpg" alt="Abo Ghanem Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793420/Steams_3_fvibzb.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793420/Steams_3_fvibzb.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793420/Steams_3_fvibzb.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793420/Steams_3_fvibzb.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Steams Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Steams 3.jpg" alt="Steams Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793413/Perfeito_postArtboard_1_p0fwjq.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793413/Perfeito_postArtboard_1_p0fwjq.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793413/Perfeito_postArtboard_1_p0fwjq.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793413/Perfeito_postArtboard_1_p0fwjq.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Perfeito Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Perfeito postArtboard 1.jpg" alt="Perfeito Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793412/Perfeito_postArtboard_2_pr0xwg.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793412/Perfeito_postArtboard_2_pr0xwg.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793412/Perfeito_postArtboard_2_pr0xwg.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793412/Perfeito_postArtboard_2_pr0xwg.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Perfeito Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Perfeito postArtboard 2.jpg" alt="Perfeito Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793404/Monchox-01_pkauaw.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793404/Monchox-01_pkauaw.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793404/Monchox-01_pkauaw.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793404/Monchox-01_pkauaw.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Monchox Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Monchox-01.jpg" alt="Monchox Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793395/Steams_1_odr5os.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793395/Steams_1_odr5os.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793395/Steams_1_odr5os.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793395/Steams_1_odr5os.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Steams Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Steams 1.jpg" alt="Steams Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793368/Qalaa_post_4_jgp9m6.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793368/Qalaa_post_4_jgp9m6.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793368/Qalaa_post_4_jgp9m6.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793368/Qalaa_post_4_jgp9m6.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Qalaa Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Qalaa post 4.jpg" alt="Qalaa Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793354/Miss_Janoub-01_arm0dr.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793354/Miss_Janoub-01_arm0dr.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793354/Miss_Janoub-01_arm0dr.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793354/Miss_Janoub-01_arm0dr.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Miss Janoub Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Miss Janoub-01.jpg" alt="Miss Janoub Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793310/rs_w_740_cg_true_npafap.webp" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793310/rs_w_740_cg_true_npafap.webp 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793310/rs_w_740_cg_true_npafap.webp 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793310/rs_w_740_cg_true_npafap.webp 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Post Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Hitaf post-01.jpg" alt="Hitaf Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793308/rs_w_740_cg_true_m_jyyfjv.webp" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793308/rs_w_740_cg_true_m_jyyfjv.webp 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793308/rs_w_740_cg_true_m_jyyfjv.webp 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793308/rs_w_740_cg_true_m_jyyfjv.webp 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Post Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Lion Delivery-01.jpg" alt="Lion Delivery Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793307/rs_w_740_cg_true_m_1_heozc8.webp" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793307/rs_w_740_cg_true_m_1_heozc8.webp 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793307/rs_w_740_cg_true_m_1_heozc8.webp 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793307/rs_w_740_cg_true_m_1_heozc8.webp 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Post Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/lea-16.jpg" alt="Lea Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793304/Hitaf_post-01_xqp4cf.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793304/Hitaf_post-01_xqp4cf.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793304/Hitaf_post-01_xqp4cf.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793304/Hitaf_post-01_xqp4cf.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Hitaf Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Lion Delivery-02.jpg" alt="Lion Delivery Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793294/Lion_Delivery-01_egu3ff.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793294/Lion_Delivery-01_egu3ff.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793294/Lion_Delivery-01_egu3ff.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793294/Lion_Delivery-01_egu3ff.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Lion Delivery Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/lea-15.jpg" alt="Lea Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793279/lea-16_gmirj0.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793279/lea-16_gmirj0.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793279/lea-16_gmirj0.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793279/lea-16_gmirj0.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Lea Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Lion Delivery-03.jpg" alt="Lion Delivery Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793277/Lion_Delivery-02_wv6ukh.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793277/Lion_Delivery-02_wv6ukh.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793277/Lion_Delivery-02_wv6ukh.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793277/Lion_Delivery-02_wv6ukh.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Lion Delivery Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/lea-14.jpg" alt="Lea Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793273/lea-15_tjmogu.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793273/lea-15_tjmogu.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793273/lea-15_tjmogu.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793273/lea-15_tjmogu.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Lea Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Hitaf post-02.jpg" alt="Hitaf Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793269/Lion_Delivery-03_kqveui.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793269/Lion_Delivery-03_kqveui.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793269/Lion_Delivery-03_kqveui.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793269/Lion_Delivery-03_kqveui.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Lion Delivery Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Kufi post 2-01.jpg" alt="Kufi Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793248/lea-14_i6escy.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793248/lea-14_i6escy.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793248/lea-14_i6escy.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793248/lea-14_i6escy.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Lea Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Kufi post-01.jpg" alt="Kufi Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793223/Hitaf_post-02_wdeowu.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793223/Hitaf_post-02_wdeowu.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793223/Hitaf_post-02_wdeowu.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793223/Hitaf_post-02_wdeowu.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Hitaf Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Ceas-02.jpg" alt="Ceas Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793220/Kufi_post_2-01_wvhn7f.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793220/Kufi_post_2-01_wvhn7f.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793220/Kufi_post_2-01_wvhn7f.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793220/Kufi_post_2-01_wvhn7f.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Kufi Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/best pro-05.jpg" alt="Best Pro Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793202/Kufi_post-01_uhft9v.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793202/Kufi_post-01_uhft9v.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793202/Kufi_post-01_uhft9v.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793202/Kufi_post-01_uhft9v.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Kufi Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/DUBZ-04.jpg" alt="DUBZ Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793202/Ceas-02_jijjxy.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793202/Ceas-02_jijjxy.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793202/Ceas-02_jijjxy.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793202/Ceas-02_jijjxy.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Ceas Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/DUBZ-03.jpg" alt="DUBZ Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793192/best_pro-05_ncxe66.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793192/best_pro-05_ncxe66.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793192/best_pro-05_ncxe66.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793192/best_pro-05_ncxe66.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Best Pro Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/best pro-04.jpg" alt="Best Pro Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793188/DUBZ-04_flb5i1.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793188/DUBZ-04_flb5i1.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793188/DUBZ-04_flb5i1.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793188/DUBZ-04_flb5i1.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="DUBZ Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Eid Adha.webp" alt="Eid Adha Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793183/DUBZ-03_tdtfjt.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793183/DUBZ-03_tdtfjt.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793183/DUBZ-03_tdtfjt.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793183/DUBZ-03_tdtfjt.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="DUBZ Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/al amin 6 june-03.jpg" alt="Al Amin Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793169/best_pro-04_kjtsi3.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793169/best_pro-04_kjtsi3.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793169/best_pro-04_kjtsi3.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793169/best_pro-04_kjtsi3.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Best Pro Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/Adams Posts-04.jpg" alt="Adams Posts Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793163/Eid_Adha_m0obuy.webp" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793163/Eid_Adha_m0obuy.webp 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793163/Eid_Adha_m0obuy.webp 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793163/Eid_Adha_m0obuy.webp 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Eid Adha Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/al amin 6 june-02.jpg" alt="Al Amin Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793161/al_amin_6_june-03_sxkrro.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793161/al_amin_6_june-03_sxkrro.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793161/al_amin_6_june-03_sxkrro.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793161/al_amin_6_june-03_sxkrro.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Al Amin Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/AL Amin 1.jpg" alt="Al Amin Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793124/Adams_Posts-04_ouftzd.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793124/Adams_Posts-04_ouftzd.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793124/Adams_Posts-04_ouftzd.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793124/Adams_Posts-04_ouftzd.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Adams Posts Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/American Arts Academy_Illustration.jpg" alt="American Arts Academy Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793117/al_amin_6_june-02_etkwtz.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793117/al_amin_6_june-02_etkwtz.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793117/al_amin_6_june-02_etkwtz.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793117/al_amin_6_june-02_etkwtz.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Al Amin Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/American Arts Academy_Content Creation.jpg" alt="American Arts Academy Design" loading="lazy">
                 </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793093/AL_Amin_1_peyuwt.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793093/AL_Amin_1_peyuwt.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793093/AL_Amin_1_peyuwt.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793093/AL_Amin_1_peyuwt.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Al Amin Design"
-                         onload="this.parentElement.classList.remove('loading')">
-                </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793074/American_Arts_Academy_Illustration_y2x0j4.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793074/American_Arts_Academy_Illustration_y2x0j4.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793074/American_Arts_Academy_Illustration_y2x0j4.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793074/American_Arts_Academy_Illustration_y2x0j4.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="American Arts Academy Design"
-                         onload="this.parentElement.classList.remove('loading')">
-                </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793048/American_Arts_Academy_Content_Creation_f6rptm.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793048/American_Arts_Academy_Content_Creation_f6rptm.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793048/American_Arts_Academy_Content_Creation_f6rptm.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793048/American_Arts_Academy_Content_Creation_f6rptm.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="American Arts Academy Design"
-                         onload="this.parentElement.classList.remove('loading')">
-                </div>
-                <div class="project-item loading">
-                    <img src="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793043/AL_Amin_2_dsfnzn.jpg" 
-                         srcset="https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_400/v1752793043/AL_Amin_2_dsfnzn.jpg 400w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_800/v1752793043/AL_Amin_2_dsfnzn.jpg 800w,
-                                 https://res.cloudinary.com/dgdihng02/image/upload/f_auto,q_auto,w_1200/v1752793043/AL_Amin_2_dsfnzn.jpg 1200w"
-                         sizes="(max-width: 768px) 100vw, 33vw"
-                         loading="lazy"
-                         alt="Al Amin Design"
-                         onload="this.parentElement.classList.remove('loading')">
+                <div class="project-item">
+                    <img src="projects/post-designs/images/AL Amin 2.jpg" alt="Al Amin Design" loading="lazy">
                 </div>
             </div>
         </div>
@@ -457,7 +217,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Noah's Design. All rights reserved.</p>
+            <p>&copy; 2024 Noah's Design. All rights reserved.</p>
         </div>
     </footer>
 
@@ -466,29 +226,50 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <button class="modal-close" aria-label="Close modal">×</button>
+        <div class="modal-content">
+            <img src="" alt="" id="modalImage">
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/main.js"></script>
-    <script>
-        // Initialize intersection observer for lazy loading
+    <script src="js/masonry-modal.js">
         document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.project-item img');
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                        }
-                        observer.unobserve(img);
-                    }
-                });
-            }, {
-                rootMargin: '50px 0px',
-                threshold: 0.01
+            // Initialize Masonry
+            var grid = document.querySelector('.projects-grid');
+            var masonry = new Masonry(grid, {
+                itemSelector: '.project-item',
+                columnWidth: '.project-item',
+                percentPosition: true,
+                gutter: 20,
+                transitionDuration: '0.3s'
             });
 
-            images.forEach(img => imageObserver.observe(img));
+            // Update layout after each image loads
+            var images = document.querySelectorAll('.project-item img');
+            images.forEach(function(img) {
+                img.onload = function() {
+                    masonry.layout();
+                };
+            });
+
+            // Back to Top button functionality
+            var backToTop = document.getElementById('back-to-top');
+            window.onscroll = function() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    backToTop.style.display = "block";
+                } else {
+                    backToTop.style.display = "none";
+                }
+            };
+
+            backToTop.onclick = function() {
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            };
         });
     </script>
 </body>

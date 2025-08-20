@@ -1,0 +1,239 @@
+/* Mobile-First Responsive Styles */
+
+/* Base Mobile Styles */
+@media (max-width: 768px) {
+    /* Container */
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Navigation */
+    .nav-container {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 80vh;
+        padding: 80px 0 40px;
+    }
+
+    .hero-content {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .main-logo img {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    /* Portfolio Grid */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0;
+    }
+
+    .portfolio-item {
+        aspect-ratio: 16/9;
+    }
+
+    .portfolio-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 1rem;
+    }
+
+    .portfolio-overlay h3 {
+        font-size: 1.2rem;
+        transform: none;
+        opacity: 1;
+    }
+
+    .portfolio-overlay p {
+        font-size: 0.9rem;
+        transform: none;
+        opacity: 1;
+    }
+
+    /* About Section */
+    .about {
+        padding: 60px 0;
+    }
+
+    .about-content {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .about-image {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /* Contact Section */
+    .contact {
+        padding: 60px 0;
+    }
+
+    .contact-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contact-text {
+        text-align: center;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .info-item {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Forms */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px; /* Prevent zoom on iOS */
+        padding: 0.8rem;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+    /* Buttons */
+    .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .back-to-top {
+        right: 1rem;
+        bottom: 1rem;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 0 2rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-content {
+        gap: 3rem;
+    }
+
+    .contact-content {
+        gap: 3rem;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+    .portfolio-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    .portfolio-overlay h3,
+    .portfolio-overlay p {
+        transform: none;
+        opacity: 1;
+    }
+
+    .btn:hover {
+        transform: none !important;
+    }
+}
+
+/* Landscape Mode */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+    }
+
+    .hero-content {
+        padding: 2rem 0;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Dark Mode Adjustments */
+@media (prefers-color-scheme: dark) {
+    .portfolio-overlay {
+        background: rgba(0, 0, 0, 0.8);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .nav-container,
+    .back-to-top,
+    .portfolio-overlay {
+        display: none;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        color: #000;
+        background: #fff;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    img {
+        max-width: 100%;
+        page-break-inside: avoid;
+    }
+}

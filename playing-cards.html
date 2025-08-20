@@ -8,6 +8,9 @@
     <link rel="icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABwcHCmdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cHBwpgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" type="image/x-icon">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/masonry-grid.css">
     <link rel="stylesheet" href="css/playing-cards.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,19 +60,19 @@
                          data-project-id="cedars-deck"
                          data-project-title="Cedars Playing Cards"
                          data-project-images='[
-                            "https://res.cloudinary.com/dgdihng02/image/upload/v1752792457/Clubs_txzetf.jpg",
-                            "https://res.cloudinary.com/dgdihng02/image/upload/v1752792458/guilding_ztaq7y.jpg",
-                            "https://res.cloudinary.com/dgdihng02/image/upload/v1752792457/Diamonds_pqqytz.jpg",
-                            "https://res.cloudinary.com/dgdihng02/image/upload/v1752792458/Hearts_kcrtqm.jpg",
-                            "https://res.cloudinary.com/dgdihng02/image/upload/v1752792459/pack-box_h3wvxr.jpg",
-                            "https://res.cloudinary.com/dgdihng02/image/upload/v1752792459/Spades_gpw6or.jpg",
-                            "https://res.cloudinary.com/dgdihng02/image/upload/v1752792459/tuck-box_vbiah5.jpg",
-                            "https://res.cloudinary.com/dgdihng02/image/upload/v1752792459/inner-print_emtrvw.jpg",
-                            "https://res.cloudinary.com/dgdihng02/image/upload/v1752792459/3-tucks_gkht1b.jpg",
-                            "https://res.cloudinary.com/dgdihng02/image/upload/v1752792460/Ace-of-spades_mwmh21.jpg",
-                            "https://res.cloudinary.com/dgdihng02/image/upload/v1752792459/Joker_ioyleq.jpg"
+                            "projects/playing-cards/full-images/Clubs.jpg",
+                            "projects/playing-cards/full-images/guilding.jpg",
+                            "projects/playing-cards/full-images/Diamonds.jpg",
+                            "projects/playing-cards/full-images/Hearts.jpg",
+                            "projects/playing-cards/full-images/pack-box.jpg",
+                            "projects/playing-cards/full-images/Spades.jpg",
+                            "projects/playing-cards/full-images/tuck-box.jpg",
+                            "projects/playing-cards/full-images/inner-print.jpg",
+                            "projects/playing-cards/full-images/3-tucks.jpg",
+                            "projects/playing-cards/full-images/Ace-of-spades.jpg",
+                            "projects/playing-cards/full-images/Joker.jpg"
                          ]'>
-                        <img src="https://res.cloudinary.com/dgdihng02/image/upload/v1752792311/68e03989c4b900f31e15ed29dad98894_original_m1dnj9.jpg" 
+                        <img src="projects/playing-cards/thumbnails/cedars-deck-thumb.jpg" 
                              alt="Cedars Playing Cards Thumbnail">
                     </div>
                     <div class="card-info">
@@ -77,23 +80,28 @@
                         <p>A Kickstarter-funded playing card project celebrating Lebanese heritage. Features traditional court card designs, elegant cedar motifs, and custom artwork throughout, including a distinctive green color scheme and intricate back design.</p>
                     </div>
                 </div>
-
-                <!-- Placeholder for more projects -->
             </div>
         </div>
     </section>
 
     <!-- Modal for displaying full images -->
     <div class="modal">
+        <button class="modal-close" aria-label="Close modal">×</button>
         <div class="modal-content">
-            <!-- Content will be dynamically inserted here -->
+            <div class="modal-gallery">
+                <!-- Images will be dynamically inserted here -->
+            </div>
+            <div class="modal-navigation">
+                <button class="nav-prev" aria-label="Previous image">❮</button>
+                <button class="nav-next" aria-label="Next image">❯</button>
+            </div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Noah's Design. All rights reserved.</p>
+            <p>&copy; 2024 Noah's Design. All rights reserved.</p>
         </div>
     </footer>
 
@@ -106,4 +114,4 @@
     <script src="js/main.js"></script>
     <script src="js/playing-cards.js"></script>
 </body>
-</html> 
+</html>
