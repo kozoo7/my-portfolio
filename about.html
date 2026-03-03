@@ -17,13 +17,18 @@
 <body>
     <!-- Header Section -->
     <header class="header">
-        <nav class="nav-container">
+        <nav class="nav-container" aria-label="Main navigation">
             <div class="logo">
                 <a href="index.html">
                     <img src="images/your-logo.png" alt="Portfolio Logo" class="logo-image">
                 </a>
             </div>
-            <ul class="nav-links">
+            <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+            </button>
+            <ul class="nav-links" id="primary-nav">
                 <li><a href="index.html">Back to Home</a></li>
             </ul>
         </nav>
@@ -47,11 +52,11 @@
                     <p class="path-intro">With over a decade of experience in design and visual communication, I've evolved from a passionate creative to a versatile Art Director. Here's my story in milestones:</p>
                     <div class="journey-preview">
                         <ul class="achievement-list">
-                            <li>Foundation Years (2013-2015) - Junior Designer & Photography</li>
-                            <li>Building Expertise (2015-2017) - Head of Graphics</li>
-                            <li>Digital Transformation (2017-Present) - VFX & UI/UX</li>
-                            <li>Regional Expansion (2019-2021) - International Projects</li>
-                            <li>Leadership & Innovation (2021-Present) - Art Direction</li>
+                            <li>Foundation Years (2013-2015) – Junior Designer & Photography</li>
+                            <li>Building Expertise (2015-2017) – From Graphic Designer to Head of Graphics</li>
+                            <li>Digital Transformation (2017-Present) – Social Media, UI Design, VFX & CGI</li>
+                            <li>Regional Expansion (2019-2021) – Middle East projects & Cedars Playing Cards</li>
+                            <li>Current Excellence (2023-Present) – Art Direction & Creative Leadership</li>
                         </ul>
                         <button class="view-journey-btn">
                             <span>Read the Full Story</span>

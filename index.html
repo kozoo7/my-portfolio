@@ -41,12 +41,21 @@
 <body>
     <!-- Header Section -->
     <header class="header">
-        <nav class="nav-container">
-            <div class="logo">
-                <img src="images/your-logo.png" alt="Portfolio Logo" class="logo-image">
-            </div>
-            <ul class="nav-links">
-                <li><a href="about.html">Get to know me better</a></li>
+        <nav class="nav-container" aria-label="Main navigation">
+            <a href="#home" class="logo" aria-label="Back to top">
+                <img src="images/your-logo.png" alt="Noah portfolio logo" class="logo-image">
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+            </button>
+            <ul class="nav-links" id="primary-nav">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="about.html">Full profile</a></li>
             </ul>
         </nav>
     </header>
