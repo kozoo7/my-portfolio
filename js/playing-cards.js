@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Open modal and initialize gallery
     document.querySelectorAll('.card-thumbnail').forEach(thumbnail => {
         thumbnail.addEventListener('click', function() {
-            const images = JSON.parse(this.dataset.projectImages);
+            const images = JSON.parse(this.dataset.projectImages || '[]');
             const title = this.dataset.projectTitle;
             
-            currentImages = images;
+            currentImages = Array.isArray(images) ? images : [];
             currentImageIndex = 0;
             
             showImage(currentImageIndex);
@@ -22,20 +22,46 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Show specific image in modal
+    // Show specific image in modal (with smooth fade)
     function showImage(index) {
-        if (!currentImages.length) return;
-        
-        // Clear existing content
-        modalContent.innerHTML = '';
-        
-        // Create and add new image
-        const img = document.createElement('img');
-        img.src = currentImages[index];
-        img.alt = `Image ${index + 1} of ${currentImages.length}`;
-        modalContent.appendChild(img);
-        
-        // Update navigation buttons
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+
+        if (!currentImages.length) {
+            modalContent.innerHTML = '';
+            const msg = document.createElement('p');
+            msg.className = 'modal-no-images';
+            msg.textContent = 'No gallery images yet. Add image URLs to the card\'s data-project-images in playing-cards.html.';
+            msg.setAttribute('style', 'color:#888;padding:2rem;text-align:center;max-width:320px;');
+            modalContent.appendChild(msg);
+            return;
+        }
+
+        let img = modalContent.querySelector('img');
+        if (img) {
+            img.classList.add('modal-gallery-img-leaving');
+            img.addEventListener('transitionend', function handler() {
+                img.removeEventListener('transitionend', handler);
+                img.src = currentImages[index];
+                img.alt = `Image ${index + 1} of ${currentImages.length}`;
+                img.onload = function() {
+                    img.classList.remove('modal-gallery-img-leaving');
+                };
+                if (img.complete) img.classList.remove('modal-gallery-img-leaving');
+            }, { once: true });
+        } else {
+            img = document.createElement('img');
+            img.src = currentImages[index];
+            img.alt = `Image ${index + 1} of ${currentImages.length}`;
+            img.className = 'modal-gallery-img-enter';
+            modalContent.appendChild(img);
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    img.classList.remove('modal-gallery-img-enter');
+                });
+            });
+        }
+
         prevBtn.style.display = index > 0 ? 'block' : 'none';
         nextBtn.style.display = index < currentImages.length - 1 ? 'block' : 'none';
     }
@@ -103,9 +129,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Preload all gallery images
+    // Preload all gallery images (skip if no images)
     document.querySelectorAll('.card-thumbnail').forEach(thumbnail => {
-        const images = JSON.parse(thumbnail.dataset.projectImages);
-        preloadImages(images);
+        const raw = thumbnail.dataset.projectImages;
+        const images = raw ? JSON.parse(raw) : [];
+        if (Array.isArray(images) && images.length) preloadImages(images);
     });
 });
