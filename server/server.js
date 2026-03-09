@@ -25,18 +25,29 @@ const transporter = nodemailer.createTransport({
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
     try {
-        const { name, email, message } = req.body;
+        const rawName = typeof req.body.name === 'string' ? req.body.name : '';
+        const rawEmail = typeof req.body.email === 'string' ? req.body.email : '';
+        const rawMessage = typeof req.body.message === 'string' ? req.body.message : '';
 
-        // Validate input
+        const name = rawName.trim().slice(0, 200);
+        const email = rawEmail.trim().slice(0, 200);
+        const message = rawMessage.trim().slice(0, 5000);
+
+        // Basic validation
         if (!name || !email || !message) {
-            return res.status(400).json({ error: 'All fields are required' });
+            return res.status(400).json({ error: 'Name, email and message are required.' });
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({ error: 'Please provide a valid email address.' });
         }
 
         // Email options
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: 'noahadallah1@gmail.com', // Your email
-            subject: `Portfolio Contact: ${name}`,
+            subject: `Portfolio contact from ${name}`,
             text: `
 Name: ${name}
 Email: ${email}

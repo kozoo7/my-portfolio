@@ -44,17 +44,30 @@ class CategoryManager {
     }
 
     async fetchCategoryData(categoryId, page) {
-        // Simulate API call - replace with actual API endpoint
+        // This expects a real backend API (not available on GitHub Pages).
+        // Consumers should treat failures as \"no more items\" and can show a friendly empty state.
         const start = (page - 1) * this.pageSize;
-        const response = await fetch(`/api/categories/${categoryId}?start=${start}&limit=${this.pageSize}`);
-        
-        if (!response.ok) {
-            throw new Error('Failed to fetch category data');
-        }
 
-        const data = await response.json();
-        this.hasMore = data.hasMore;
-        return data;
+        try {
+            const response = await fetch(`/api/categories/${categoryId}?start=${start}&limit=${this.pageSize}`);
+
+            if (!response.ok) {
+                if (response.status === 404) {
+                    console.warn('Category API not found. Returning empty data set for static hosting.');
+                    this.hasMore = false;
+                    return { items: [], hasMore: false };
+                }
+                throw new Error('Failed to fetch category data');
+            }
+
+            const data = await response.json();
+            this.hasMore = data.hasMore;
+            return data;
+        } catch (error) {
+            console.error('Error fetching category data:', error);
+            this.hasMore = false;
+            return { items: [], hasMore: false };
+        }
     }
 
     processData(data) {

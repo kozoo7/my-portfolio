@@ -1190,6 +1190,14 @@ img:not(.allow-download) {
     max-width: 500px;
 }
 
+.contact-note {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--tertiary-color);
+    opacity: 0.8;
+    max-width: 500px;
+}
+
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -1939,6 +1947,12 @@ section {
 .footer p {
     color: var(--tertiary-color);
     opacity: 0.8;
+}
+
+/* Highlight current nav item */
+.nav-links a[aria-current="page"] {
+    border-bottom: 2px solid var(--secondary-color);
+    opacity: 1;
 }
 
 /* Back to Top Button */

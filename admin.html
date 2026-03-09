@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Admin</title>
+    <title>Portfolio Admin | Personal Tools</title>
+    <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -23,15 +24,15 @@
 
     <main class="detailed-about" style="padding-top:120px;">
         <div class="container">
-            <h1 class="page-title">Admin: Manage Projects</h1>
+            <h1 class="page-title">Admin tools (local only)</h1>
 
             <section class="about-grid" style="grid-template-columns: 2fr 3fr;">
                 <div class="about-card">
                     <h2>Settings</h2>
-                    <p class="path-intro">Select a category, then add, edit, or delete projects. Changes are saved to the server JSON file.</p>
+                    <p class="path-intro">These controls are personal tools for experimenting with project layouts. On this GitHub Pages deployment, changes are not saved to a server or database.</p>
 
                     <div class="form-group" style="margin-top:1.5rem;">
-                        <label for="adminToken">Admin token (saved locally)</label>
+                        <label for="adminToken">Admin key (saved only in this browser)</label>
                         <input type="password" id="adminToken" placeholder="Enter admin token">
                     </div>
                     <button id="saveTokenBtn" class="submit-btn" style="margin-top:0.5rem;">Save Token</button>
@@ -48,11 +49,11 @@
                         </select>
                     </div>
                     <button id="loadProjectsBtn" class="submit-btn" style="margin-top:0.5rem;">Load Projects</button>
-                    <p id="adminStatus" style="margin-top:1rem; opacity:0.8;"></p>
+                    <p id="adminStatus" style="margin-top:1rem; opacity:0.8;">Note: to enable real saving, connect this UI to an external backend instead of GitHub Pages.</p>
                 </div>
 
                 <div class="about-card">
-                    <h2>Projects in Category</h2>
+                    <h2>Projects in category</h2>
 
                     <div id="projectsList"></div>
 
@@ -89,11 +90,11 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Noah's Design. Admin panel.</p>
+            <p>&copy; <span id="footer-year"></span> Noah Adallah. Admin tools.</p>
         </div>
     </footer>
 
-    <script src="js/admin.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
 

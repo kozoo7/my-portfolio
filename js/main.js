@@ -23,13 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Smooth Scrolling for Navigation Links
+// Smooth Scrolling for Navigation Links (within-page only)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const targetSelector = this.getAttribute('href');
+        const targetElement = targetSelector ? document.querySelector(targetSelector) : null;
+
+        if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
@@ -53,7 +58,7 @@ const progressObserver = new IntersectionObserver((entries) => {
 
 progressBars.forEach(bar => progressObserver.observe(bar));
 
-// Form Handling
+// Basic contact form handling (front-end only, no backend on GitHub Pages)
 const contactForm = document.getElementById('contact-form');
 const formGroups = document.querySelectorAll('.form-group');
 
@@ -73,39 +78,35 @@ if (contactForm) {
         }
     });
 
-    contactForm.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        // Get form data
+
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+
         const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            message: document.getElementById('message').value
+            name: nameInput ? nameInput.value.trim() : '',
+            email: emailInput ? emailInput.value.trim() : '',
+            message: messageInput ? messageInput.value.trim() : ''
         };
 
-        // Basic form validation
         if (!formData.name || !formData.email || !formData.message) {
-            alert('Please fill in all fields');
+            window.alert('Please fill in your name, email and a short message.');
             return;
         }
 
-        if (!isValidEmail(formData.email)) {
-            alert('Please enter a valid email address');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            window.alert('Please enter a valid email address.');
             return;
         }
 
-        // Here you would typically send the form data to a server
-        // For demo purposes, we'll just log it and show a success message
-        console.log('Form submitted:', formData);
-        alert('Message sent successfully!');
+        // Front-end only: no server call on GitHub Pages
+        console.log('Contact form submitted (front-end only):', formData);
+        window.alert('Thanks for your message. If you do not receive a reply, please email me directly at noahadallah1@gmail.com or use WhatsApp.');
         contactForm.reset();
     });
-}
-
-// Email validation helper
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
 }
 
 // Scroll-based animations
@@ -320,27 +321,24 @@ updateProgressBars();
 
 // Smooth scroll for Explore More link
 document.addEventListener('DOMContentLoaded', function() {
-    // Get the explore link
     const exploreLink = document.querySelector('.explore-link');
     const portfolioSection = document.querySelector('#portfolio');
 
     if (exploreLink && portfolioSection) {
         exploreLink.addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Smooth scroll to portfolio section
             portfolioSection.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
         });
     }
-}); 
+});
 
 // Back to top button functionality
 document.addEventListener('DOMContentLoaded', function() {
     const backToTopButton = document.getElementById('back-to-top');
-    
+
     if (backToTopButton) {
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
@@ -354,6 +352,14 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+    }
+});
+
+// Shared footer year helper (static hosting, no backend)
+document.addEventListener('DOMContentLoaded', function() {
+    const yearElement = document.getElementById('footer-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
     }
 });
 

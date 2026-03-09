@@ -123,9 +123,9 @@ class BlogManager {
     updateLoadMoreButton() {
         const loadMoreBtn = document.getElementById('load-more');
         if (!loadMoreBtn) return;
-        
-        // In a real implementation, check if there are more posts to load
-        const hasMorePosts = this.currentPage < 3; // Example condition
+
+        // Demo behaviour: only a small number of extra sample posts
+        const hasMorePosts = this.currentPage < 3;
         loadMoreBtn.style.display = hasMorePosts ? '' : 'none';
     }
 
@@ -146,11 +146,11 @@ class BlogManager {
             submitBtn.textContent = 'Subscribing...';
             
             try {
-                // In a real implementation, send to your newsletter service
+                // Demo only: this does not talk to a real newsletter service
                 await this.subscribeToNewsletter(email);
-                
+
                 // Show success message
-                this.showMessage('Successfully subscribed to the newsletter!', 'success');
+                this.showMessage('Thanks for your interest. This demo form does not use an automated mailing list yet.', 'success');
                 form.reset();
             } catch (error) {
                 this.showMessage('Failed to subscribe. Please try again.', 'error');

@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 Sitemap: https://kozoo7.github.io/my-portfolio/sitemap.xml
 
-# Allow all robots complete access
-Disallow:
+# Prevent admin tools from being indexed
+Disallow: /admin

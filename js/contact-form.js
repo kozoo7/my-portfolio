@@ -1,10 +1,15 @@
-// Contact form handling
+// Contact form handling (requires a real backend API)
 class ContactForm {
     constructor(formId) {
         this.form = document.getElementById(formId);
         this.submitButton = this.form.querySelector('button[type="submit"]');
         this.originalButtonText = this.submitButton.textContent;
-        this.apiUrl = 'https://your-server-url.com/api/contact'; // Update with your server URL
+
+        // IMPORTANT:
+        // This site is hosted on GitHub Pages and cannot run a Node server.
+        // Set this to your deployed contact API (for example, the URL of server/server.js on a separate host).
+        // If left empty, the form will not attempt to send data and will show an honest fallback message.
+        this.apiUrl = ''; // e.g. 'https://your-deployed-backend.com/api/contact'
 
         this.initialize();
     }
@@ -72,23 +77,27 @@ class ContactForm {
         try {
             this.setLoading(true);
             const response = await this.submitForm(data);
-            
-            if (response.ok) {
+
+            if (response && response.ok) {
                 this.showSuccess();
                 this.form.reset();
-            } else {
-                const error = await response.json();
-                this.showError(error.message || 'Failed to send message');
+            } else if (response) {
+                const error = await response.json().catch(() => ({}));
+                this.showError(error.error || error.message || 'Failed to send message.');
             }
         } catch (error) {
             console.error('Error submitting form:', error);
-            this.showError('Failed to send message. Please try again later.');
+            this.showError(error.message || 'This portfolio is hosted on GitHub Pages, so the contact API is not configured here. Please email me directly instead.');
         } finally {
             this.setLoading(false);
         }
     }
 
     async submitForm(data) {
+        if (!this.apiUrl) {
+            throw new Error('Contact API URL is not configured for this deployment.');
+        }
+
         return fetch(this.apiUrl, {
             method: 'POST',
             headers: {

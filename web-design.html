@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Design | Creative Portfolio</title>
+    <title>Web Design | Noah Adallah</title>
+    <meta name="description" content="Web design concepts and interfaces by Noah Adallah, focusing on portfolios, e‑commerce and restaurant experiences.">
     <!-- Basic Favicon -->
     <link rel="icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABycnKvdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cnJyrwAAAAAAAAAAAAAAAAAAAAAAAAAAcnJyr3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3Jycq8AAAAAAAAAAAAAAAAAAAAAAAAAAHJycq90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP9ycnKvAAAAAAAAAAAAAAAAAAAAAAAAAABwcHCmdHR0/3R0dP90dHT/dHR0/3R0dP90dHT/dHR0/3R0dP90dHT/cHBwpgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" type="image/x-icon">
     <!-- Stylesheets -->
@@ -16,14 +17,17 @@
 <body>
     <!-- Header Section -->
     <header class="header">
-        <nav class="nav-container">
+        <nav class="nav-container" aria-label="Main navigation">
             <div class="logo">
                 <a href="index.html">
                     <img src="images/your-logo.png" alt="Portfolio Logo" class="logo-image">
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Back to Portfolio</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -130,7 +134,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Noah's Design. All rights reserved.</p>
+            <p>&copy; <span id="footer-year"></span> Noah Adallah. All rights reserved.</p>
         </div>
     </footer>
 

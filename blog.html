@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog & Insights | Noah's Creative Portfolio</title>
+    <title>Blog & Insights | Noah Adallah</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Explore insights, case studies, and creative process behind motion graphics, VFX, and design projects. Learn about the latest trends and techniques in digital design.">
@@ -26,15 +26,16 @@
 <body>
     <!-- Header Section -->
     <header class="header">
-        <nav class="nav-container">
+        <nav class="nav-container" aria-label="Main navigation">
             <div class="logo">
                 <a href="index.html">
                     <img src="images/your-logo.png" alt="Portfolio Logo" class="logo-image">
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Portfolio</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" aria-current="page">Blog</a></li>
                 <li><a href="#contact" class="contact-link">Contact</a></li>
             </ul>
         </nav>
@@ -123,12 +124,15 @@
     <section class="newsletter">
         <div class="container">
             <div class="newsletter-content">
-                <h2>Stay Updated</h2>
-                <p>Subscribe to receive the latest insights and tutorials</p>
+                <h2>Stay updated</h2>
+                <p>Get occasional updates when I publish new case studies or tutorials. This simple form just lets me know you are interested.</p>
                 <form id="newsletter-form" class="newsletter-form">
                     <input type="email" id="email" name="email" placeholder="Enter your email" required>
                     <button type="submit">Subscribe</button>
                 </form>
+                <p class="newsletter-note">
+                    This demo newsletter does not use an automated mailing list yet. You can always reach me directly by email if you prefer.
+                </p>
             </div>
         </div>
     </section>
@@ -138,10 +142,10 @@
         <div class="container">
             <div class="contact-content">
                 <div class="contact-text">
-                    <h2 class="contact-title">GET IN TOUCH</h2>
-                    <h3 class="contact-subtitle">DON'T BE SHY</h3>
+                    <h2 class="contact-title">Get in touch</h2>
+                    <h3 class="contact-subtitle">Let’s talk about your next brief</h3>
                     <p class="contact-description">
-                        Feel free to get in touch with me. I am always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+                        Share a short overview of your project or idea and I’ll get back to you as soon as I can. Email and WhatsApp are also available if you prefer.
                     </p>
                     <div class="contact-info">
                         <div class="info-item">
@@ -167,7 +171,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Noah's Design. All rights reserved.</p>
+            <p>&copy; <span id="footer-year"></span> Noah Adallah. All rights reserved.</p>
         </div>
     </footer>
 

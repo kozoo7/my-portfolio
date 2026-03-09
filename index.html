@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noah's Creative Portfolio | Motion Graphics & Design</title>
+    <title>Noah Adallah | Motion Graphics, VFX & Design</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Creative portfolio of Noah, a professional graphic designer specializing in motion graphics, VFX, brand identity, and digital design. View my latest projects and get in touch for collaborations.">
-    <meta name="keywords" content="motion graphics, graphic design, VFX, 3D animation, brand identity, logo design, creative portfolio, Noah designer">
-    <meta name="author" content="Noah">
+    <meta name="description" content="Portfolio of Noah Adallah, a motion graphics, VFX and visual design specialist. Explore commercial projects in branding, logo animation, VFX and digital campaigns, and get in touch for collaborations.">
+    <meta name="keywords" content="motion graphics, graphic design, VFX, 3D animation, brand identity, logo design, creative portfolio, Noah Adallah, visual designer">
+    <meta name="author" content="Noah Adallah">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Noah's Creative Portfolio | Motion Graphics & Design">
-    <meta property="og:description" content="Explore my creative work in motion graphics, VFX, brand identity, and digital design. Professional graphic designer available for collaborations.">
+    <meta property="og:title" content="Noah Adallah | Motion Graphics, VFX & Design">
+    <meta property="og:description" content="Explore motion graphics, VFX, brand identity and digital design projects by Noah Adallah. Professional visual design for brands and campaigns.">
     <meta property="og:image" content="https://kozoo7.github.io/my-portfolio/images/og-image.jpg">
     <meta property="og:url" content="https://kozoo7.github.io/my-portfolio/">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Noah's Creative Portfolio | Motion Graphics & Design">
-    <meta name="twitter:description" content="Explore my creative work in motion graphics, VFX, brand identity, and digital design. Professional graphic designer available for collaborations.">
+    <meta name="twitter:title" content="Noah Adallah | Motion Graphics, VFX & Design">
+    <meta name="twitter:description" content="Explore motion graphics, VFX, brand identity and digital design projects by Noah Adallah.">
     <meta name="twitter:image" content="https://kozoo7.github.io/my-portfolio/images/og-image.jpg">
     
     <!-- Favicon and Apple Touch Icons -->
@@ -42,7 +42,7 @@
     <!-- Header Section -->
     <header class="header">
         <nav class="nav-container" aria-label="Main navigation">
-            <a href="#home" class="logo" aria-label="Back to top">
+            <a href="#home" class="logo" aria-label="Back to top of homepage">
                 <img src="images/your-logo.png" alt="Noah portfolio logo" class="logo-image">
             </a>
             <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
@@ -51,7 +51,7 @@
                 <span class="menu-bar"></span>
             </button>
             <ul class="nav-links" id="primary-nav">
-                <li><a href="#home">Home</a></li>
+                <li><a href="#home" aria-current="page">Home</a></li>
                 <li><a href="#portfolio">Work</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -83,8 +83,8 @@
                 </div>
             </div>
             <div class="text-content">
-                <h1 class="animate-text">Creative <span class="highlight">Designer</span></h1>
-                <p class="subtitle">Turning Ideas into Visual Stories</p>
+                <h1 class="animate-text">Motion Graphics, <span class="highlight">VFX</span> & Design</h1>
+                <p class="subtitle">Crafting clear, cinematic visuals for brands and campaigns</p>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -162,7 +162,7 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I'm a passionate graphic designer with a keen eye for detail and a love for creating impactful visual experiences. With expertise in branding, digital design, and print media, I help businesses tell their stories through compelling visuals.</p>
+                    <p>I am a motion graphics, VFX and visual design specialist who helps brands turn complex ideas into clear, cinematic stories. From brand identity and logo animation to social campaigns and product visuals, I focus on work that feels polished, purposeful and on-brief.</p>
                     <a href="about.html" class="btn btn-primary know-more-btn" aria-label="Learn more about Noah">
                         Know More
                         <span class="btn-arrow" aria-hidden="true">→</span>
@@ -191,10 +191,10 @@
         <div class="container">
             <div class="contact-content">
                 <div class="contact-text">
-                    <h2 class="contact-title">GET IN TOUCH</h2>
-                    <h3 class="contact-subtitle">DON'T BE SHY</h3>
+                    <h2 class="contact-title">Get in touch</h2>
+                    <h3 class="contact-subtitle">Let’s talk about your project</h3>
                     <p class="contact-description">
-                        Feel free to get in touch with me. I am always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+                        Share a brief about your project, collaboration or idea. I usually reply within a few days. For urgent inquiries, email or WhatsApp are the fastest ways to reach me.
                     </p>
                     <div class="contact-info">
                         <div class="info-item">
@@ -226,10 +226,13 @@
                         </div>
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="terms" name="terms" required>
-                            <label for="terms">I accept the Terms of Service</label>
+                            <label for="terms">I understand this form is handled in my browser and prefer to be contacted back by email.</label>
                         </div>
                         <button type="submit" class="submit-btn">SUBMIT</button>
                     </form>
+                    <p class="contact-note" aria-live="polite">
+                        This form does not use a backend on GitHub Pages. If you do not receive a reply, please reach out directly via email or WhatsApp.
+                    </p>
                 </div>
             </div>
         </div>
@@ -238,7 +241,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Noah's Design. All rights reserved.</p>
+            <p>&copy; <span id="footer-year"></span> Noah Adallah. All rights reserved.</p>
         </div>
     </footer>
 
@@ -249,7 +252,6 @@
 
     <script src="js/main.js" type="module"></script>
     <script src="js/analytics.js"></script>
-    <script src="js/contact-form.js"></script>
     <script src="js/performance-monitor.js" type="module"></script>
 </body>
 </html> 
