@@ -16,6 +16,29 @@
     <!-- Masonry -->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="js/masonry.js"></script>
+    <style>
+        /* Keep footer at bottom: body is flex column, main content grows */
+        body { display: flex; flex-direction: column; min-height: 100vh; }
+        body .header { flex: 0 0 auto; }
+        body .category-header { flex: 0 0 auto; }
+        body .projects { flex: 1 1 auto; padding-bottom: 3rem; }
+        body .footer { flex: 0 0 auto; margin-top: auto; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .project-item-card .card-thumbnail { cursor: pointer; border-radius: 12px; overflow: hidden; background: #1a1a1a; }
+        .project-item-card .card-thumbnail img { width: 100%; height: auto; display: block; transition: transform 0.3s ease; }
+        .project-item-card .card-thumbnail:hover img { transform: scale(1.05); }
+        .cafedor-modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .cafedor-modal.active { opacity: 1; visibility: visible; }
+        .cafedor-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.85); }
+        .cafedor-modal-box { position: relative; background: var(--background-color, #40403f); max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; border-radius: 16px; padding: 2rem; box-shadow: 0 20px 60px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
+        .cafedor-modal-close { position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px; border: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; border-radius: 8px; transition: background 0.2s; }
+        .cafedor-modal-close:hover { background: rgba(255,255,255,0.2); }
+        .cafedor-modal-title { margin: 0 0 0.5rem; font-size: 2rem; color: var(--secondary-color, #e0a639); }
+        .cafedor-modal-subtitle { margin: 0 0 1.5rem; color: rgba(255,255,255,0.85); line-height: 1.6; font-size: 1rem; }
+        .cafedor-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+        .cafedor-gallery img { width: 100%; height: auto; border-radius: 8px; display: block; }
+        @media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -57,92 +80,37 @@
     <section class="projects">
         <div class="container">
             <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/brand-identity/videos/project1.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                <!-- Cafe Dor — click thumbnail to open gallery modal -->
+                <div class="project-item project-item-card">
+                    <div class="card-thumbnail cafedor-thumb" id="cafedor-thumbnail" role="button" tabindex="0" aria-label="Open Cafe Dor project">
+                        <img src="https://drive.google.com/thumbnail?id=1PmE97lf7T7srFReHul7ZYhP1eFhmkpz3&sz=w800" alt="Cafe Dor — Brand identity">
                     </div>
                     <div class="project-info">
-                        <h3>Corporate Rebrand</h3>
-                        <p>Complete corporate identity refresh with modern design elements</p>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/brand-identity/videos/project2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Startup Identity</h3>
-                        <p>Fresh and innovative brand identity for tech startup</p>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/brand-identity/videos/project3.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Restaurant Brand</h3>
-                        <p>Cohesive restaurant branding with warm and inviting aesthetics</p>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/brand-identity/videos/project4.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Fashion Label</h3>
-                        <p>Sophisticated brand identity for luxury fashion brand</p>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/brand-identity/videos/project5.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Product Line</h3>
-                        <p>Distinctive brand identity for consumer product range</p>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="project-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="./projects/brand-identity/videos/project6.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="project-info">
-                        <h3>Event Branding</h3>
-                        <p>Dynamic brand identity system for major event series</p>
+                        <h3>Cafe Dor</h3>
+                        <p>Brand identity — logo uplift and mockups in Illustrator & Blender</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Cafe Dor project modal: title, subtitle, gallery (add your image links below) -->
+    <div id="cafedor-modal" class="cafedor-modal" aria-hidden="true">
+        <div class="cafedor-modal-backdrop"></div>
+        <div class="cafedor-modal-box">
+            <button type="button" class="cafedor-modal-close" aria-label="Close modal">×</button>
+            <h2 class="cafedor-modal-title">Cafedor</h2>
+            <p class="cafedor-modal-subtitle">Uplifted the logo to a new version and designed these mockups using Illustrator and Blender, entirely from scratch.</p>
+            <div class="cafedor-gallery">
+                <img src="https://drive.google.com/thumbnail?id=1E5t0UNXxCJGIZeZ_Sbq1ehrNIElar8nA&sz=w800" alt="Cafe Dor — Coffee cup set" loading="lazy">
+                <img src="https://drive.google.com/thumbnail?id=1_c0alDp2Y8RzxXnjdLHK-Myal9pOFgfE&sz=w800" alt="Cafe Dor — Crepe Box closed" loading="lazy">
+                <img src="https://drive.google.com/thumbnail?id=1SXCkHZo86zMRuZOXKlUBbVRzSeIeW_Zz&sz=w800" alt="Cafe Dor — Cup carrier" loading="lazy">
+                <img src="https://drive.google.com/thumbnail?id=1aZXCXYBsiFw1J0zXTLgkGP5hO5Jw6459&sz=w800" alt="Cafe Dor — Ice cream box" loading="lazy">
+                <img src="https://drive.google.com/thumbnail?id=1LhfSXSSNZVINDdJOy6SKT4wmo5cgg38C&sz=w800" alt="Cafe Dor — Ice cream cup set" loading="lazy">
+                <img src="https://drive.google.com/thumbnail?id=1FPTqZzRFlxYXBjXuiobMUCoUioqWtvqg&sz=w800" alt="Cafe Dor — Tray Kogowa" loading="lazy">
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -157,5 +125,36 @@
     </button>
 
     <script src="js/main.js"></script>
+    <script>
+        (function() {
+            var thumb = document.getElementById('cafedor-thumbnail');
+            var modal = document.getElementById('cafedor-modal');
+            var closeBtn = modal && modal.querySelector('.cafedor-modal-close');
+            var backdrop = modal && modal.querySelector('.cafedor-modal-backdrop');
+
+            function openCafedorModal() {
+                if (modal) {
+                    modal.classList.add('active');
+                    modal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            function closeCafedorModal() {
+                if (modal) {
+                    modal.classList.remove('active');
+                    modal.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            if (thumb) thumb.addEventListener('click', openCafedorModal);
+            if (thumb) thumb.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCafedorModal(); } });
+            if (closeBtn) closeBtn.addEventListener('click', closeCafedorModal);
+            if (backdrop) backdrop.addEventListener('click', closeCafedorModal);
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal && modal.classList.contains('active')) closeCafedorModal();
+            });
+        })();
+    </script>
 </body>
 </html> 
