@@ -35,8 +35,13 @@
         .cafedor-modal-close:hover { background: rgba(255,255,255,0.2); }
         .cafedor-modal-title { margin: 0 0 0.5rem; font-size: 2rem; color: var(--secondary-color, #e0a639); }
         .cafedor-modal-subtitle { margin: 0 0 1.5rem; color: rgba(255,255,255,0.85); line-height: 1.6; font-size: 1rem; }
+        .cafedor-section { margin-bottom: 2rem; }
+        .cafedor-section:last-child { margin-bottom: 0; }
+        .cafedor-section-title { margin: 0 0 1rem; font-size: 1rem; font-weight: 600; color: var(--secondary-color, #e0a639); text-transform: uppercase; letter-spacing: 0.05em; }
         .cafedor-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
         .cafedor-gallery img { width: 100%; height: auto; border-radius: 8px; display: block; }
+        .cafedor-gallery.logo-presentation { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+        .cafedor-gallery.logo-presentation img { border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
         @media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -101,14 +106,27 @@
             <button type="button" class="cafedor-modal-close" aria-label="Close modal">×</button>
             <h2 class="cafedor-modal-title">Cafedor</h2>
             <p class="cafedor-modal-subtitle">Uplifted the logo to a new version and designed these mockups using Illustrator and Blender, entirely from scratch.</p>
-            <div class="cafedor-gallery">
-                <img src="https://drive.google.com/thumbnail?id=1E5t0UNXxCJGIZeZ_Sbq1ehrNIElar8nA&sz=w800" alt="Cafe Dor — Coffee cup set" loading="lazy">
-                <img src="https://drive.google.com/thumbnail?id=1_c0alDp2Y8RzxXnjdLHK-Myal9pOFgfE&sz=w800" alt="Cafe Dor — Crepe Box closed" loading="lazy">
-                <img src="https://drive.google.com/thumbnail?id=1SXCkHZo86zMRuZOXKlUBbVRzSeIeW_Zz&sz=w800" alt="Cafe Dor — Cup carrier" loading="lazy">
-                <img src="https://drive.google.com/thumbnail?id=1aZXCXYBsiFw1J0zXTLgkGP5hO5Jw6459&sz=w800" alt="Cafe Dor — Ice cream box" loading="lazy">
-                <img src="https://drive.google.com/thumbnail?id=1LhfSXSSNZVINDdJOy6SKT4wmo5cgg38C&sz=w800" alt="Cafe Dor — Ice cream cup set" loading="lazy">
-                <img src="https://drive.google.com/thumbnail?id=1FPTqZzRFlxYXBjXuiobMUCoUioqWtvqg&sz=w800" alt="Cafe Dor — Tray Kogowa" loading="lazy">
-            </div>
+
+            <section class="cafedor-section">
+                <h3 class="cafedor-section-title">Logo presentation</h3>
+                <div class="cafedor-gallery logo-presentation">
+                    <img src="https://drive.google.com/thumbnail?id=1-APdTApTX-AVKMfLQP4tsjtiKFRzRlfi&sz=w800" alt="Cafe Dor — Logo construction" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1lFHbSC4wy30eDNmXmJeJxl4SLEGnyFQw&sz=w800" alt="Cafe Dor — Logo exploration" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1NwFw7iFP1KG57w8tKYjJ9um8nokWpybQ&sz=w800" alt="Cafe Dor — Logo final" loading="lazy">
+                </div>
+            </section>
+
+            <section class="cafedor-section">
+                <h3 class="cafedor-section-title">Mockups & applications</h3>
+                <div class="cafedor-gallery">
+                    <img src="https://drive.google.com/thumbnail?id=1E5t0UNXxCJGIZeZ_Sbq1ehrNIElar8nA&sz=w800" alt="Cafe Dor — Coffee cup set" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1_c0alDp2Y8RzxXnjdLHK-Myal9pOFgfE&sz=w800" alt="Cafe Dor — Crepe Box closed" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1SXCkHZo86zMRuZOXKlUBbVRzSeIeW_Zz&sz=w800" alt="Cafe Dor — Cup carrier" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1aZXCXYBsiFw1J0zXTLgkGP5hO5Jw6459&sz=w800" alt="Cafe Dor — Ice cream box" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1LhfSXSSNZVINDdJOy6SKT4wmo5cgg38C&sz=w800" alt="Cafe Dor — Ice cream cup set" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1FPTqZzRFlxYXBjXuiobMUCoUioqWtvqg&sz=w800" alt="Cafe Dor — Tray Kogowa" loading="lazy">
+                </div>
+            </section>
         </div>
     </div>
 
