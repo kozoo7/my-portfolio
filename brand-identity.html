@@ -42,6 +42,14 @@
         .cafedor-gallery img { width: 100%; height: auto; border-radius: 8px; display: block; }
         .cafedor-gallery.logo-presentation { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
         .cafedor-gallery.logo-presentation img { border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+        .cafedor-gallery img { cursor: zoom-in; }
+        /* Lightbox: enlarge image on click */
+        .lightbox { position: fixed; inset: 0; z-index: 10002; display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, visibility 0.25s ease; }
+        .lightbox.active { opacity: 1; visibility: visible; }
+        .lightbox-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.94); cursor: pointer; }
+        .lightbox-close { position: absolute; top: 1rem; right: 1rem; z-index: 1; width: 44px; height: 44px; border: none; background: rgba(255,255,255,0.15); color: #fff; font-size: 1.75rem; line-height: 1; cursor: pointer; border-radius: 50%; transition: background 0.2s; }
+        .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+        .lightbox-img { position: relative; z-index: 1; max-width: 100%; max-height: 90vh; width: auto; height: auto; object-fit: contain; border-radius: 8px; pointer-events: none; }
         @media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -95,6 +103,28 @@
                         <p>Brand identity — logo uplift and mockups in Illustrator & Blender</p>
                     </div>
                 </div>
+
+                <!-- Veranova — click thumbnail to open gallery modal -->
+                <div class="project-item project-item-card">
+                    <div class="card-thumbnail" id="veranova-thumbnail" role="button" tabindex="0" aria-label="Open Veranova project">
+                        <img src="https://drive.google.com/thumbnail?id=192ZlKjxIUrMhGKUQul719eIzt58DJMYg&sz=w800" alt="Veranova — Hero logo">
+                    </div>
+                    <div class="project-info">
+                        <h3>Veranova</h3>
+                        <p>Brand identity and visual identity design</p>
+                    </div>
+                </div>
+
+                <!-- Trufella — click thumbnail to open gallery modal -->
+                <div class="project-item project-item-card">
+                    <div class="card-thumbnail" id="trufella-thumbnail" role="button" tabindex="0" aria-label="Open Trufella project">
+                        <img src="https://drive.google.com/thumbnail?id=1F8qdu_6WmC6PadUPWPy1luELgxkWidUo&sz=w800" alt="Trufella — Brand identity">
+                    </div>
+                    <div class="project-info">
+                        <h3>Trufella</h3>
+                        <p>Brand identity — logo and mockups</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -130,6 +160,63 @@
         </div>
     </div>
 
+    <!-- Veranova project modal: hero logo, logo concept, mockups -->
+    <div id="veranova-modal" class="cafedor-modal" aria-hidden="true">
+        <div class="cafedor-modal-backdrop"></div>
+        <div class="cafedor-modal-box">
+            <button type="button" class="cafedor-modal-close" aria-label="Close modal">×</button>
+            <h2 class="cafedor-modal-title">Veranova</h2>
+            <p class="cafedor-modal-subtitle">Brand identity and visual identity design.</p>
+
+            <section class="cafedor-section">
+                <h3 class="cafedor-section-title">Logo concept</h3>
+                <div class="cafedor-gallery logo-presentation">
+                    <img src="https://drive.google.com/thumbnail?id=1hvCJxsw0y4gNJDwNYfNtyUGUvuF1FnI5&sz=w800" alt="Veranova — Logo concept 1" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1-D4-zmkGwu-jVx-26ZkN8dE7feq3M3eb&sz=w800" alt="Veranova — Logo concept 2" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1_QmNqJUUjqPlW1q3XferOnIQ4Fg476lc&sz=w800" alt="Veranova — Logo concept 3" loading="lazy">
+                </div>
+            </section>
+
+            <section class="cafedor-section">
+                <h3 class="cafedor-section-title">Mockups and application</h3>
+                <div class="cafedor-gallery">
+                    <img src="https://drive.google.com/thumbnail?id=1rVqgDVlkCq0nRM8cDIocdrtrVqWZ1JTw&sz=w800" alt="Veranova — Mockup 1" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1mGi7odhIrdqkhdQKfTWpIlU3vig_S1el&sz=w800" alt="Veranova — Mockup 2" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1AZNEjW0sp16gJuQLLt6iOlC6EyZSw-Cm&sz=w800" alt="Veranova — Mockup 3" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=108TmxB4ESbjS9C2lRKCXey8tigpimMTO&sz=w800" alt="Veranova — Mockup 4" loading="lazy">
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Trufella project modal -->
+    <div id="trufella-modal" class="cafedor-modal" aria-hidden="true">
+        <div class="cafedor-modal-backdrop"></div>
+        <div class="cafedor-modal-box">
+            <button type="button" class="cafedor-modal-close" aria-label="Close modal">×</button>
+            <h2 class="cafedor-modal-title">Trufella</h2>
+            <p class="cafedor-modal-subtitle">Brand identity — logo design and application.</p>
+
+            <section class="cafedor-section">
+                <h3 class="cafedor-section-title">Logo presentation</h3>
+                <div class="cafedor-gallery logo-presentation">
+                    <img src="https://drive.google.com/thumbnail?id=1lDjtzFliBKL_HoDlDFXmShrGOYvZjzdF&sz=w800" alt="Trufella — Logo 1" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1B27ZWkfgEs27BASkCkC1iLMWSNazP_hN&sz=w800" alt="Trufella — Logo 2" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1M6daLJZEbP8ILpCNs_yZivW6SKKQhbdY&sz=w800" alt="Trufella — Logo 3" loading="lazy">
+                </div>
+            </section>
+
+            <section class="cafedor-section">
+                <h3 class="cafedor-section-title">Mockups and application</h3>
+                <div class="cafedor-gallery">
+                    <img src="https://drive.google.com/thumbnail?id=1IcyeO4NuAry3kqWiPFzMeLKkcbAnpbzT&sz=w800" alt="Trufella — Mockup 1" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1KHHa51BYdzsv_4MklUFbsoFYi6N7QhbA&sz=w800" alt="Trufella — Mockup 2" loading="lazy">
+                    <img src="https://drive.google.com/thumbnail?id=1VLU_Jj7muwomkPpxJKPlM8smeb2dFWPI&sz=w800" alt="Trufella — Mockup 3" loading="lazy">
+                </div>
+            </section>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -142,35 +229,77 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Lightbox: click gallery image to enlarge -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <div class="lightbox-backdrop" aria-label="Close"></div>
+        <button type="button" class="lightbox-close" aria-label="Close lightbox">×</button>
+        <img src="" alt="" class="lightbox-img" id="lightbox-img">
+    </div>
+
     <script src="js/main.js"></script>
     <script>
         (function() {
-            var thumb = document.getElementById('cafedor-thumbnail');
-            var modal = document.getElementById('cafedor-modal');
-            var closeBtn = modal && modal.querySelector('.cafedor-modal-close');
-            var backdrop = modal && modal.querySelector('.cafedor-modal-backdrop');
+            function bindModal(thumbId, modalId) {
+                var thumb = document.getElementById(thumbId);
+                var modal = document.getElementById(modalId);
+                if (!modal) return;
+                var closeBtn = modal.querySelector('.cafedor-modal-close');
+                var backdrop = modal.querySelector('.cafedor-modal-backdrop');
 
-            function openCafedorModal() {
-                if (modal) {
+                function openModal() {
                     modal.classList.add('active');
                     modal.setAttribute('aria-hidden', 'false');
                     document.body.style.overflow = 'hidden';
                 }
-            }
-            function closeCafedorModal() {
-                if (modal) {
+                function closeModal() {
                     modal.classList.remove('active');
                     modal.setAttribute('aria-hidden', 'true');
                     document.body.style.overflow = '';
                 }
+
+                if (thumb) {
+                    thumb.addEventListener('click', openModal);
+                    thumb.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); } });
+                }
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+                if (backdrop) backdrop.addEventListener('click', closeModal);
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+                });
+            }
+            bindModal('cafedor-thumbnail', 'cafedor-modal');
+            bindModal('veranova-thumbnail', 'veranova-modal');
+            bindModal('trufella-thumbnail', 'trufella-modal');
+
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightbox-img');
+            var lightboxClose = lightbox && lightbox.querySelector('.lightbox-close');
+            var lightboxBackdrop = lightbox && lightbox.querySelector('.lightbox-backdrop');
+
+            function openLightbox(img) {
+                if (!lightbox || !lightboxImg || !img || !img.src) return;
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt || 'Enlarged view';
+                lightbox.classList.add('active');
+                lightbox.setAttribute('aria-hidden', 'false');
+            }
+            function closeLightbox() {
+                if (!lightbox) return;
+                lightbox.classList.remove('active');
+                lightbox.setAttribute('aria-hidden', 'true');
             }
 
-            if (thumb) thumb.addEventListener('click', openCafedorModal);
-            if (thumb) thumb.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCafedorModal(); } });
-            if (closeBtn) closeBtn.addEventListener('click', closeCafedorModal);
-            if (backdrop) backdrop.addEventListener('click', closeCafedorModal);
+            document.body.addEventListener('click', function(e) {
+                if (e.target.matches('.cafedor-gallery img')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openLightbox(e.target);
+                }
+            });
+            if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+            if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal && modal.classList.contains('active')) closeCafedorModal();
+                if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) closeLightbox();
             });
         })();
     </script>

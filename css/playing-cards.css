@@ -139,6 +139,64 @@
     opacity: 1;
 }
 
+.modal-gallery img {
+    cursor: zoom-in;
+}
+
+/* Lightbox: click image to enlarge */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.94);
+    cursor: pointer;
+}
+.lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+.lightbox-img {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
 /* Modal navigation arrows – fixed to viewport for easy, visible navigation */
 .modal-navigation {
     position: fixed;

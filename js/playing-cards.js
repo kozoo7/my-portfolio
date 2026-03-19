@@ -116,7 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 break;
             case 'Escape':
-                closeModal();
+                if (lightbox && lightbox.classList.contains('active')) closeLightbox();
+                else closeModal();
                 break;
         }
     });
@@ -134,5 +135,37 @@ document.addEventListener('DOMContentLoaded', function() {
         const raw = thumbnail.dataset.projectImages;
         const images = raw ? JSON.parse(raw) : [];
         if (Array.isArray(images) && images.length) preloadImages(images);
+    });
+
+    // Lightbox: click modal image to enlarge
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = lightbox && lightbox.querySelector('.lightbox-close');
+    const lightboxBackdrop = lightbox && lightbox.querySelector('.lightbox-backdrop');
+
+    function openLightbox(img) {
+        if (!lightbox || !lightboxImg || !img || !img.src) return;
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || 'Enlarged view';
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+    }
+    function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+    }
+
+    modalContent.addEventListener('click', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+            e.stopPropagation();
+            openLightbox(e.target);
+        }
+    });
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) closeLightbox();
     });
 });
